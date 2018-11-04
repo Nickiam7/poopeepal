@@ -1,0 +1,14 @@
+$body-color:   #3d596d !default;
+$green:        #3db39e !default;
+$red:          #d83941 !default;
+$blue:         #b5d9ff !default;
+$dark-blue:    darken($blue, 25%) !default;
+$light-blue:   #edf6ff !default;
+
+$primary:     $dark-blue !default;
+
+$box-shadow: 3px 5px 30px 0 rgba(0,0,0,0.15) !default;
+$gradient: linear-gradient(235deg, $dark-blue, $blue 33%, #ffffff 33%) !default;
+
+$input-border-radius: 1px;
+$btn-border-radius: 1px;

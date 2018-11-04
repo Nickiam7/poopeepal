@@ -1,0 +1,4 @@
+<h1><%= @account.username %></h1>
+<% if account_signed_in? %>
+   <%= link_to "Log out", destroy_account_session_path, method: :delete %>
+<% end %>

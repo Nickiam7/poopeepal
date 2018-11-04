@@ -1,0 +1,46 @@
+<main>
+<header>
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-6 offset-lg-3">
+      <%= link_to root_path do %>
+        <%= image_tag("ppp-logo.svg", class: "d-block mx-auto my-3 my-md-5", width: 100, alt: "PooPeePal") %>
+      <% end %>
+      <div class="card">
+        <div class="card-body box-shadow">
+          <h2 class="text-center">Log in</h2>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password %>
+              <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+            </div>
+
+            <% if devise_mapping.rememberable? -%>
+              <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                  <%= f.check_box :remember_me, class: "custom-control-input" %>
+                  <%= f.label :remember_me, class: "custom-control-label pt-1" %>
+                </div>
+              </div>
+            <% end -%>
+
+            <div class="form-group">
+              <%= f.button "Log in", class: "btn btn-success btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Logging in..."} %>
+            </div>
+          <% end %>
+          <p class="small">
+             Need an account? <%= link_to "Create one", new_account_registration_path %><br>
+             Forgot your password? <%= link_to "Recover password", new_account_password_path %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+</main>
