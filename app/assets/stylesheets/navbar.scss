@@ -1,0 +1,47 @@
+.main-nav {
+   background: #ffffff;
+   border-bottom: 1px solid $gray-100;
+   position: sticky;
+   top: 0;
+   z-index: 1;
+   @media(min-width: 768px) {
+      background: transparent;
+      border-bottom: none;
+      -webkit-transition: all .35s;
+      -moz-transition: all .35s;
+      transition: all .35s;
+   }
+   &--scroll {
+      background: #ffffff;
+      border-bottom: 1px solid $gray-100;
+      -webkit-transition: all .35s;
+      -moz-transition: all .35s;
+      transition: all .35s;
+   }
+}
+.navbar-nav .nav-item a.nav-link {
+   color: $body-color;
+   font-weight: 700;
+}
+.navbar-light {
+   color: $body-color;
+   .navbar-brand {
+      font-weight: 700;
+      color: $body-color;
+   }
+   .navbar-toggler {
+      border: none;
+      color: $body-color;   
+   }
+}
+.icon-bar {
+   background-color: $body-color;
+   display: block;
+   width: 22px;
+   height: 2px;
+   margin: {
+      top: 3px;
+      bottom: 3px;
+   }
+   border-radius: 1px;
+}

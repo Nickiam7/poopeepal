@@ -1,17 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>PooPeePal</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <% if flash[:notice] %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+    <div class="wrapper">
+      <%= render partial: "shared/main_nav" unless current_page?(new_account_session_path) %>
+      <%= yield %>
+    </div>
   </body>
 </html>
