@@ -13,7 +13,7 @@
    }
    &--scroll {
       background: #ffffff;
-      border-bottom: 1px solid $gray-100;
+      box-shadow: $box-shadow;
       -webkit-transition: all .35s;
       -moz-transition: all .35s;
       transition: all .35s;
