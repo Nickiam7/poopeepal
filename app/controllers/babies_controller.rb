@@ -2,11 +2,12 @@ class BabiesController < ApplicationController
    before_action :authenticate_account!
 
    def new
+      @account = current_account
       @baby = Baby.new
    end
 
    def create
-      @account = Account.find(params[:account_id])
+      @account = Account.find(params[:id])
       @baby = Account.babies.new(baby_params)
       if @baby.save
          flash[:success] = "A dashboard for #{@baby.name} has been created!"
