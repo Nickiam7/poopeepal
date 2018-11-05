@@ -1,4 +1,4 @@
-.main-nav {
+.navbar--main-nav {
    background: #ffffff;
    border-bottom: 1px solid $gray-100;
    position: sticky;
@@ -11,7 +11,7 @@
       -moz-transition: all .35s;
       transition: all .35s;
    }
-   &--scroll {
+   &.navbar--main-nav-scroll {
       background: #ffffff;
       box-shadow: $box-shadow;
       -webkit-transition: all .35s;

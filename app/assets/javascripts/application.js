@@ -21,9 +21,9 @@
 document.addEventListener("turbolinks:load", function() {
    $(window).scroll(function(){
       if ($(this).scrollTop() > 55) {
-         $('.main-nav').addClass('main-nav--scroll');
+         $('.navbar--main-nav').addClass('navbar--main-nav-scroll');
       } else {
-         $('.main-nav').removeClass('main-nav--scroll');
+         $('.navbar--main-nav').removeClass('navbar--main-nav-scroll');
       }
    });
 });
