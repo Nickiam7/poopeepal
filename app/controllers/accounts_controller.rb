@@ -4,8 +4,4 @@ class AccountsController < ApplicationController
    def dashboard
       @account = current_account
    end
-
-   def customize
-      @account = current_account
-   end
 end

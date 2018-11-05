@@ -5,8 +5,7 @@ Rails.application.routes.draw do
    resources :babies, only: [:show, :new, :create]
 
    get "/accounts/dashboard/", to: "accounts#dashboard"
-   get "/accounts/customize/", to: "accounts#customize"
-
+   
    authenticated :account do 
       root to: "accounts#dashboard"
    end 
