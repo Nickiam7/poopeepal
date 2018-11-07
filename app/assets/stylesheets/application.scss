@@ -23,3 +23,42 @@ header {
    }
    border: 1px solid $danger;
 }
+
+.sidebar {
+   position: sticky;
+   background: $body-color;
+   top: 0;
+   height: auto;
+   overflow-x: hidden;
+   overflow-y: auto;
+   @media(min-width: 768px) {
+      height: calc(100vh);
+   }
+   .navbar-brand {
+      display: block;   
+      background: #ffffff;
+      border-right: none;
+      box-shadow: $box-shadow;
+      margin: {
+         right: auto;
+         left: auto;
+      }
+      @media(min-width: 768px) {         
+         border-right: 1px solid $gray-200;
+         margin-bottom: 3rem;
+      }
+   }
+   .nav-link {
+      color: $gray-200;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      &:first-child {
+         border-top: 1px solid rgba(255,255,255,0.2);
+      }
+      &:hover {
+         background: #395468;
+         color: $gray-300;
+      }
+   }
+}

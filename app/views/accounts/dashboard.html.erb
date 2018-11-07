@@ -1,4 +1,16 @@
-<h1><%= @account.username %></h1>
-<% if account_signed_in? %>
-   <%= link_to "Log out", destroy_account_session_path, method: :delete %>
-<% end %>
+<main>
+<div class="container">
+   <div class="row">
+      <div class="col">
+         <div class="card">
+            <div class="card-body box-shadow">
+               <h1><%= @account.username %></h1>
+               <% @babies.each do |baby| %>
+                  <%= link_to baby.name, baby_path(baby) %>
+               <% end %>
+               <%= link_to "Create New Baby Dashboard", new_baby_path %> <br>            
+            </div>
+         </div>
+   </div>
+</div>
+</main>

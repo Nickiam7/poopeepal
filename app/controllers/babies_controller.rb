@@ -1,20 +1,31 @@
 class BabiesController < ApplicationController
    before_action :authenticate_account!
+   layout "baby"
 
    def new
       @account = current_account
       @baby = Baby.new
    end
 
+   def show
+      @baby = Baby.find(params[:id])
+   end
+
+   def start
+      @account = current_account
+      @baby = Baby.new
+   end
+
    def create
-      @account = Account.find(params[:id])
-      @baby = Account.babies.new(baby_params)
+      @account = current_account
+      @baby = @account.babies.new(baby_params)
       if @baby.save
          flash[:success] = "A dashboard for #{@baby.name} has been created!"
+         redirect_to baby_path(@baby)
       else
          flash[:error] = "Sorry we weren't able to create this dashboard. Please try again."
+         render :new
       end
-      redirect_to account_path(current_account)
    end
 
    private

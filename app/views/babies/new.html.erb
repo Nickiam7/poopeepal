@@ -1,3 +1,133 @@
-<h1>Hello from the new baby form!</h1>
-<%= @account.username %>
-<strong><%= @account.sign_in_count %></strong>
+<main>
+<div class="row no-gutters">
+   <div class="col-1 col-lg-2 sidebar">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag("ppp-logo.svg", class: "d-block align-top mx-auto", width: 50) %>
+      <% end %>
+      <%= link_to root_path, class: "btn btn-primary mx-auto my-3 d-block w-75" do %>
+         <%= fa_icon("plus") %> 
+         <span class="d-none d-lg-inline-block">New Dashboard</span>
+      <% end %>
+      <nav class="nav flex-column">
+         <%= link_to root_path, class: "nav-link" do %>
+            <%= fa_icon("home") %> 
+            <span class="d-none d-lg-inline-block">Home</span>
+         <% end %>
+         <%= link_to root_path, class: "nav-link" do %>
+            <%= fa_icon("bar-chart") %>
+            <span class="d-none d-lg-inline-block">Baby Dashboard</span>
+         <% end %>
+         <%= link_to root_path, class: "nav-link" do %>
+            <%= fa_icon("pencil-square-o") %>
+            <span class="d-none d-lg-inline-block">Notes</span>
+         <% end %>
+         <%= link_to root_path, class: "nav-link" do %>
+            <%= fa_icon("list-ol") %>
+            <span class="d-none d-lg-inline-block">To-do's</span>
+         <% end %>
+      </nav>
+   </div>
+   <div class="col-11 col-lg-10">
+      <%= render partial: "shared/baby_nav" %>
+      <div class="container">
+         <div class="card">
+            <div class="card-body box-shadow">
+               <p class="lead">Add a new baby Dashboard</p>
+               <%= form_for(@baby) do |f| %>
+                  <% if @baby.errors.any? %>
+                     <div class="alert alert-danger">
+                        <h3>Please fix <%= pluralize(@baby.errors.count, "error") %>.</h3>
+                        <ul>
+                        <% @baby.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                        <% end %>
+                        </ul>
+                     </div>
+                  <% end %>
+                  <div class="form-group">
+                     <%= f.label :name %>                  
+                     <%= f.text_field :name, class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                     <%= f.button "Create Dashboard", class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Creating Dashboard..."} %>
+                  </div>
+               <% end %>
+            </div>
+         </div>
+         <div class="card">
+            <div class="card-body box-shadow">
+               <p class="lead">Add a new baby Dashboard</p>
+               <%= form_for(@baby) do |f| %>
+                  <% if @baby.errors.any? %>
+                     <div class="alert alert-danger">
+                        <h3>Please fix <%= pluralize(@baby.errors.count, "error") %>.</h3>
+                        <ul>
+                        <% @baby.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                        <% end %>
+                        </ul>
+                     </div>
+                  <% end %>
+                  <div class="form-group">
+                     <%= f.label :name %>                  
+                     <%= f.text_field :name, class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                     <%= f.button "Create Dashboard", class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Creating Dashboard..."} %>
+                  </div>
+               <% end %>
+            </div>
+         </div>
+         <div class="card">
+            <div class="card-body box-shadow">
+               <p class="lead">Add a new baby Dashboard</p>
+               <%= form_for(@baby) do |f| %>
+                  <% if @baby.errors.any? %>
+                     <div class="alert alert-danger">
+                        <h3>Please fix <%= pluralize(@baby.errors.count, "error") %>.</h3>
+                        <ul>
+                        <% @baby.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                        <% end %>
+                        </ul>
+                     </div>
+                  <% end %>
+                  <div class="form-group">
+                     <%= f.label :name %>                  
+                     <%= f.text_field :name, class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                     <%= f.button "Create Dashboard", class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Creating Dashboard..."} %>
+                  </div>
+               <% end %>
+            </div>
+         </div>
+         <div class="card">
+            <div class="card-body box-shadow">
+               <p class="lead">Add a new baby Dashboard</p>
+               <%= form_for(@baby) do |f| %>
+                  <% if @baby.errors.any? %>
+                     <div class="alert alert-danger">
+                        <h3>Please fix <%= pluralize(@baby.errors.count, "error") %>.</h3>
+                        <ul>
+                        <% @baby.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                        <% end %>
+                        </ul>
+                     </div>
+                  <% end %>
+                  <div class="form-group">
+                     <%= f.label :name %>                  
+                     <%= f.text_field :name, class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                     <%= f.button "Create Dashboard", class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Creating Dashboard..."} %>
+                  </div>
+               <% end %>
+            </div>
+         </div>
+
+      </div>
+   </div>
+</div>
+</main>
