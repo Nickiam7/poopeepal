@@ -32,101 +32,10 @@
       <div class="container">
          <div class="card">
             <div class="card-body box-shadow">
-               <p class="lead">Add a new baby Dashboard</p>
-               <%= form_for(@baby) do |f| %>
-                  <% if @baby.errors.any? %>
-                     <div class="alert alert-danger">
-                        <h3>Please fix <%= pluralize(@baby.errors.count, "error") %>.</h3>
-                        <ul>
-                        <% @baby.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
-                        <% end %>
-                        </ul>
-                     </div>
-                  <% end %>
-                  <div class="form-group">
-                     <%= f.label :name %>                  
-                     <%= f.text_field :name, class: "form-control" %>
-                  </div>
-                  <div class="form-group">
-                     <%= f.button "Create Dashboard", class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Creating Dashboard..."} %>
-                  </div>
-               <% end %>
+               <p class="lead mb-2 mb-md-5">Fill out the form below to add a new dashboard for your baby. Once you hit <strong class="text-success">submit</strong> you'll be taken to the newly created dashboard where you can start tracking.</p>
+               <%= render partial: "babies/shared/form" %>
             </div>
-         </div>
-         <div class="card">
-            <div class="card-body box-shadow">
-               <p class="lead">Add a new baby Dashboard</p>
-               <%= form_for(@baby) do |f| %>
-                  <% if @baby.errors.any? %>
-                     <div class="alert alert-danger">
-                        <h3>Please fix <%= pluralize(@baby.errors.count, "error") %>.</h3>
-                        <ul>
-                        <% @baby.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
-                        <% end %>
-                        </ul>
-                     </div>
-                  <% end %>
-                  <div class="form-group">
-                     <%= f.label :name %>                  
-                     <%= f.text_field :name, class: "form-control" %>
-                  </div>
-                  <div class="form-group">
-                     <%= f.button "Create Dashboard", class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Creating Dashboard..."} %>
-                  </div>
-               <% end %>
-            </div>
-         </div>
-         <div class="card">
-            <div class="card-body box-shadow">
-               <p class="lead">Add a new baby Dashboard</p>
-               <%= form_for(@baby) do |f| %>
-                  <% if @baby.errors.any? %>
-                     <div class="alert alert-danger">
-                        <h3>Please fix <%= pluralize(@baby.errors.count, "error") %>.</h3>
-                        <ul>
-                        <% @baby.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
-                        <% end %>
-                        </ul>
-                     </div>
-                  <% end %>
-                  <div class="form-group">
-                     <%= f.label :name %>                  
-                     <%= f.text_field :name, class: "form-control" %>
-                  </div>
-                  <div class="form-group">
-                     <%= f.button "Create Dashboard", class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Creating Dashboard..."} %>
-                  </div>
-               <% end %>
-            </div>
-         </div>
-         <div class="card">
-            <div class="card-body box-shadow">
-               <p class="lead">Add a new baby Dashboard</p>
-               <%= form_for(@baby) do |f| %>
-                  <% if @baby.errors.any? %>
-                     <div class="alert alert-danger">
-                        <h3>Please fix <%= pluralize(@baby.errors.count, "error") %>.</h3>
-                        <ul>
-                        <% @baby.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
-                        <% end %>
-                        </ul>
-                     </div>
-                  <% end %>
-                  <div class="form-group">
-                     <%= f.label :name %>                  
-                     <%= f.text_field :name, class: "form-control" %>
-                  </div>
-                  <div class="form-group">
-                     <%= f.button "Create Dashboard", class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Creating Dashboard..."} %>
-                  </div>
-               <% end %>
-            </div>
-         </div>
-
+         </div>         
       </div>
    </div>
 </div>

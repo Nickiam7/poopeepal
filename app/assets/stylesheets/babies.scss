@@ -1,1 +1,17 @@
-
+.new-baby {
+   .form-group {
+      margin: {
+         top: 3rem;
+         bottom: 3rem;
+      }
+      label {
+         font-weight: 700;
+      }
+   }
+   .baby-error {
+      border: 1px solid $danger;
+   }
+   div.field_with_errors { 
+      display: inline-block; 
+   }
+}

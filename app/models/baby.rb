@@ -1,5 +1,5 @@
 class Baby < ApplicationRecord
   belongs_to :account
 
-  validates :name, presence: true
+  validates :name, :dob, presence: true
 end

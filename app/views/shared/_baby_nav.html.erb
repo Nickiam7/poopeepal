@@ -1,7 +1,16 @@
 <nav class="navbar navbar-expand-md navbar-light baby--main-nav">
   <div class="container">
+    <% if current_page?(babies_start_path) %>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag("ppp-logo.svg", class: "d-inline-block align-top", width: 30) %>
+      <% end %>
+    <% end %>
     <%= link_to "#", class: "navbar-brand" do %>
-      Create a new Baby Dashboard
+      <% if current_page?(babies_start_path) %>
+        <span class="ml-5">Create your first Baby Dashboard</span>
+      <% else %>
+        Create a Baby Dashboard
+      <% end %>
     <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="icon-bar"></span> 

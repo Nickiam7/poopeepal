@@ -13,6 +13,7 @@ class BabiesController < ApplicationController
 
    def start
       @account = current_account
+      redirect_to new_baby_path if @account.sign_in_count > 1
       @baby = Baby.new
    end
 

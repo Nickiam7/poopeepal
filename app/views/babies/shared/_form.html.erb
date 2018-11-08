@@ -1,0 +1,98 @@
+<div class="new-baby">
+<%= form_for(@baby) do |f| %>
+   <% if @baby.errors.any? %>
+      <div class="alert alert-danger">
+         <h3>Please fix <%= pluralize(@baby.errors.count, "error") %>.</h3>
+         <ul>
+         <% @baby.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+         <% end %>
+         </ul>
+      </div>
+   <% end %>
+   <div class="form-group row">
+      <%= f.label :name, class: "col-lg-2 col-form-label" %>
+      <div class="col-lg-10">                  
+         <%= f.text_field :name, class: "form-control" %>
+         <small id="nameHelpBlock" class="form-text text-muted font-italic">
+           *Required
+         </small>
+      </div>
+   </div>
+   <div class="form-group row">
+      <%= f.label :dob, "Date of Birth", class: "col-lg-2 col-form-label" %>
+      <div class="col-lg-10">                  
+         <%= f.text_field :dob, class: "form-control" %>
+         <small id="dobHelpBlock" class="form-text text-muted font-italic">
+           *Required
+         </small>
+      </div>
+   </div>
+   <div class="form-group row">
+      <%= f.label :gender, class: "col-lg-2 col-form-label" %>
+      <div class="col-lg-10">                  
+         <%= f.text_field :gender, class: "form-control" %>
+         <small id="genderHelpBlock" class="form-text text-muted font-italic">
+           *Optional
+         </small>
+      </div>
+   </div>
+   <div class="form-group row">
+      <%= f.label :weight, class: "col-lg-2 col-form-label" %>
+      <div class="col-lg-10">                  
+         <%= f.text_field :name, class: "form-control" %>
+         <small id="weightHelpBlock" class="form-text text-muted font-italic">
+           *Optional
+         </small>
+      </div>
+   </div>
+   <div class="form-group row">
+      <%= f.label :height, class: "col-lg-2 col-form-label" %>
+      <div class="col-lg-10">                  
+         <%= f.text_field :name, class: "form-control" %>
+         <small id="heightHelpBlock" class="form-text text-muted font-italic">
+           *Optional
+         </small>
+      </div>
+   </div>
+   <div class="form-group">
+      <%= f.button "Create Dashboard", id: "baby-submit", class: "btn btn-success float-right mt-lg-3", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Creating Dashboard..."} %>
+   </div>
+<% end %>
+</div>
+<script>
+(function(){
+   document.addEventListener("turbolinks:load", function(e) {
+      let submtButton = document.querySelector('#baby-submit')
+      let babyName = document.querySelector('#baby_name')
+      let babyNameHelper = document.querySelector('#nameHelpBlock')
+      let babydob = document.querySelector('#baby_dob')
+      let babydobHelper = document.querySelector('#dobHelpBlock')
+      submtButton.addEventListener('click', (event) => {
+         event.preventDefault()
+         if(babyName.value === '') {
+            babyName.classList.add('baby-error')
+            babyNameHelper.classList.remove('text-muted')
+            babyNameHelper.classList.add('text-danger')
+         }
+         if(babydob.value === '') {
+            babydob.classList.add('baby-error')
+            babydobHelper.classList.remove('text-muted')
+            babydobHelper.classList.add('text-danger')
+         }
+      })
+      babyName.addEventListener('focus', () => {
+         if(babyName.classList.contains('baby-error')) {
+            babyName.classList.remove('baby-error')
+            babyNameHelper.classList.remove('text-danger')
+         }
+      })
+      babydob.addEventListener('focus', () => {
+         if(babydob.classList.contains('baby-error')) {
+            babydob.classList.remove('baby-error')
+            babydobHelper.classList.remove('text-danger')
+         }
+      })
+   })
+})();
+</script>

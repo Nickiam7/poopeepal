@@ -1,24 +1,22 @@
+<%= render partial: "shared/baby_nav" %>
 <main>
 <div class="container">
    <div class="row">
       <div class="col">
          <div class="card">
             <div class="card-body box-shadow">
-               adsfa ds
-               <% if @account.sign_in_count == 1 %>
-                  <h1>Hi <%= @account.first_name %>, Welcome to PooPeePal!</h1>
-                  <div class="alert alert-success" role="alert">
-                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                     </button>
-                     <h4 class="alert-heading mb-3">Congratulations on your new bundle of joy!</h4>
-                     <p>I'm happy you've decided to try <strong>PooPeePal</strong> to help you stay organized and track all the important metrics during your babies early life!</p>
-                     <p>To get started fill out the form below. Completing this form will generate a customized dashboard for your baby. From there you'll be able to start tracking relevant metrics and stay organized with notes and to-do-lists.</p>
-                     <p></p>
-                     <hr>
-                     <p class="mb-0">Don't worry, you'll only see this message once!</p>
-                  </div>
-               <% end %>
+               <h1>Hi <%= @account.first_name %>, welcome to PooPeePal!</h1>
+               <div class="alert alert-success" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="alert-heading mb-3">Congratulations on your new bundle of joy!</h4>
+                  <p>To get started with <strong>PooPeePal</strong> fill out the form below. This will generate a customized dashboard for your baby where you'll be able to start tracking relevant metrics and stay organized with notes and to-do-lists.</p>
+                  <p></p>
+                  <hr>
+                  <p class="mb-0">Don't worry, you'll only see this message once!</p>
+               </div>
+               <%= render partial: "/babies/shared/form"%>
             </div>
          </div>
    </div>
