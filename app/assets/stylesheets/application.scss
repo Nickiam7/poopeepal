@@ -67,3 +67,49 @@ header {
       }
    }
 }
+.datepicker {
+   .table thead th {
+      vertical-align: bottom;
+      border-bottom: none;
+   }
+   .table th, .table td {   
+      vertical-align: top;
+      border-top: none;
+   }
+}
+.bootstrap-datetimepicker-widget {
+   &.dropdown-menu {
+      padding: 10px 15px 15px;
+      width: auto;
+   }
+   &.dropdown-menu.bottom:before {
+      top: -10px;
+      left: 12px;
+   } 
+   &.dropdown-menu.bottom:after {
+      top: -6px;
+      left: 13px;   
+   }
+   table td,
+   table th {
+      border-radius: 1px;
+   }
+   table td {
+      &.active {
+         background-color: $primary;
+      }
+      &.new {
+         background-color: $gray-100;  
+      } 
+      &.old {
+         background-color: $gray-100;  
+      }
+   }
+}
+
+
+
+
+
+
+
