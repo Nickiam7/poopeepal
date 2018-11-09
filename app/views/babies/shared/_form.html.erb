@@ -19,10 +19,11 @@
          </small>
       </div>
    </div>
-   <div class="form-group row">
+   <div class="form-group row has-icon">
       <%= f.label :dob, "Date of Birth", class: "col-lg-2 col-form-label" %>
-      <div class="col-lg-10">                  
-         <%= f.date_field :dob, class: "form-control" %>
+      <div class="col-lg-10">
+         <span class="fa fa-calendar form-control-icon"></span>                  
+         <%= f.text_field :dob, id: "baby_dob", class: "form-control datetimepicker-input", data: {toggle: "datetimepicker", target: "#baby_dob"}, autocomplete: 'off' %>
          <small id="dobHelpBlock" class="form-text text-muted font-italic">
            *Required
          </small>
@@ -67,19 +68,21 @@
       const babyName = document.querySelector('#baby_name')
       const babyNameHelper = document.querySelector('#nameHelpBlock')
       const babydob = document.querySelector('#baby_dob')
+      const babydobIcon = document.querySelector('.fa-calendar')
       const babydobHelper = document.querySelector('#dobHelpBlock')
       submtButton.addEventListener('click', (event) => {         
          if(babyName.value === '') {
             event.preventDefault()
             babyName.classList.add('baby-error')
             babyNameHelper.classList.remove('text-muted')
-            babyNameHelper.classList.add('text-danger')
+            babyNameHelper.classList.add('text-danger')            
          }
          if(babydob.value === '') {
             event.preventDefault()
             babydob.classList.add('baby-error')
             babydobHelper.classList.remove('text-muted')
             babydobHelper.classList.add('text-danger')
+            babydobIcon.classList.add('text-danger')
          }
       })
       babyName.addEventListener('focus', () => {
@@ -92,8 +95,12 @@
          if(babydob.classList.contains('baby-error')) {
             babydob.classList.remove('baby-error')
             babydobHelper.classList.remove('text-danger')
+            babydobIcon.classList.remove('text-danger')
          }
       })
+      $('#baby_dob').datetimepicker({
+         format: 'dddd, MMMM D, YYYY'
+      });
    })
 })();
 </script>
