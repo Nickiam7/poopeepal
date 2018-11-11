@@ -24,6 +24,7 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'momentjs-rails', '~> 2.17', '>= 2.17.1'
 gem 'bootstrap4-datetime-picker-rails', '~> 0.1.2'
+gem 'friendly_id', '~> 5.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

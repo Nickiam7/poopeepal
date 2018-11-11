@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light baby--main-nav">
+<nav class="navbar navbar-expand-md navbar-light auth--main-nav">
   <div class="container">
     <% if current_page?(babies_start_path) %>
       <%= link_to root_path, class: "navbar-brand" do %>
@@ -9,7 +9,7 @@
       <% if current_page?(babies_start_path) %>
         <span class="ml-5">Create your first Baby Dashboard</span>
       <% else %>
-        Create a Baby Dashboard
+        <%= dashboard_heading %>
       <% end %>
     <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= @account.first_name %> <%= @account.last_name %>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <div class="dropdown-menu dropdown-menu-right animation slideDownIn" aria-labelledby="navbarDropdownMenuLink">
               <%= link_to "Account Home", root_path, class: "dropdown-item" %>
               <%= link_to "Settings", edit_account_registration_path, class: "dropdown-item" %>
               <div class="dropdown-divider"></div>

@@ -1,42 +1,10 @@
 <main>
-<div class="row no-gutters">
-   <div class="col-1 col-lg-2 sidebar">
-      <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag("ppp-logo.svg", class: "d-block align-top mx-auto", width: 50) %>
-      <% end %>
-      <%= link_to new_baby_path, class: "btn btn-primary mx-auto my-3 d-block w-75" do %>
-         <%= fa_icon("plus") %> 
-         <span class="d-none d-lg-inline-block">New Dashboard</span>
-      <% end %>
-      <nav class="nav flex-column">
-         <%= link_to root_path, class: "nav-link" do %>
-            <%= fa_icon("home") %> 
-            <span class="d-none d-lg-inline-block">Home</span>
-         <% end %>
-         <%= link_to root_path, class: "nav-link" do %>
-            <%= fa_icon("bar-chart") %>
-            <span class="d-none d-lg-inline-block">Baby Dashboard</span>
-         <% end %>
-         <%= link_to root_path, class: "nav-link" do %>
-            <%= fa_icon("pencil-square-o") %>
-            <span class="d-none d-lg-inline-block">Notes</span>
-         <% end %>
-         <%= link_to root_path, class: "nav-link" do %>
-            <%= fa_icon("list-ol") %>
-            <span class="d-none d-lg-inline-block">To-do's</span>
-         <% end %>
-      </nav>
-   </div>
-   <div class="col-11 col-lg-10">
-      <%= render partial: "shared/baby_nav" %>
-      <div class="container">
-         <div class="card">
-            <div class="card-body box-shadow">
-               <p class="lead mb-2 mb-md-5">Fill out the form below to add a new dashboard for your baby. Once you hit <strong class="text-success">Create Dashboard</strong> you'll be taken to the newly created dashboard where you can start tracking.</p>
-               <%= render partial: "babies/shared/form" %>
-            </div>
-         </div>         
+<div class="container">
+   <div class="card slide-up-fade-in">
+      <div class="card-body box-shadow">
+         <p class="lead mb-2 mb-md-5">Fill out the form below to generate a new dashboard for your baby. Once you click <strong class="text-success">Create Dashboard</strong> you'll be taken to your new dashboard where you can start tracking.</p>
+         <%= render partial: "babies/shared/form" %>
       </div>
-   </div>
+   </div>         
 </div>
 </main>

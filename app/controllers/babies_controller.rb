@@ -1,24 +1,22 @@
 class BabiesController < ApplicationController
    before_action :authenticate_account!
-   layout "baby"
+   before_action :set_account
+   layout "authenticated", except: [:start]
 
-   def new
-      @account = current_account
+   def new      
       @baby = Baby.new
    end
 
-   def show
-      @baby = Baby.find(params[:id])
+   def show      
+      @baby = Baby.friendly.find(params[:id])
    end
 
-   def start
-      @account = current_account
+   def start      
       redirect_to new_baby_path if @account.sign_in_count > 1
       @baby = Baby.new
    end
 
-   def create
-      @account = current_account
+   def create      
       @baby = @account.babies.new(baby_params)
       if @baby.save
          flash[:success] = "A dashboard for #{@baby.name} has been created!"
@@ -30,6 +28,10 @@ class BabiesController < ApplicationController
    end
 
    private
+
+   def set_account
+      @account = current_account
+   end
 
    def baby_params
       params.require(:baby).permit(:name, :gender, :dob, :hight, :weight)

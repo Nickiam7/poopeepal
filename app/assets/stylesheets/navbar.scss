@@ -1,6 +1,27 @@
 .dropdown-menu {
    box-shadow: $box-shadow;
    border: none;
+   &:before {
+      position: absolute;
+      top: -9px;
+      left: 139px;
+      display: inline-block;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid $gray-200;
+      border-left: 8px solid transparent;
+      border-bottom-color: none;
+      content: '';
+   }
+   &:after {
+      position: absolute;
+      top: -7px;
+      left: 140px;
+      display: inline-block;
+      border-right: 7px solid transparent;
+      border-bottom: 7px solid #ffffff;
+      border-left: 7px solid transparent;
+      content: '';
+   }
 }
 .navbar--main-nav {
    background: #ffffff;
@@ -49,7 +70,7 @@
    }
    border-radius: 1px;
 }
-.baby--main-nav {
+.auth--main-nav {
    margin-bottom: 3rem;
    background: #ffffff;
    border-bottom: 1px solid $gray-200;

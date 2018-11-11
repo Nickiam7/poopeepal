@@ -14,4 +14,14 @@ module ApplicationHelper
    def devise_mapping
       @devise_mapping ||= Devise.mappings[:account]
    end
+
+   def dashboard_heading
+      if current_page?(root_path)
+         "Your Account Dashboard"
+      elsif current_page?(new_baby_path)    
+         "Create A New Baby Dashboard"
+      elsif current_page?(controller: "babies", action: :show)    
+         "#{@baby.name}'s Dashboard"      
+      end
+   end
 end
