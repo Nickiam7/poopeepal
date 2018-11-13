@@ -4,8 +4,11 @@
 .baby__main {
 }
 .baby__sidebar {
-   background: $gray-100;
+   background: #fdfdfd;
    border-left: 1px solid $gray-200;
+   dl {
+      margin-bottom: 0;
+   }
 }
 .new-baby {
    .form-group {

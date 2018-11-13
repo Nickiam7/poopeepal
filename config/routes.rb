@@ -7,7 +7,7 @@ Rails.application.routes.draw do
    resources :babies, only: [:show, :new, :create] 
    get "/babies/", to: redirect("/")
 
-   get "/accounts/dashboard/", to: "accounts#dashboard"
+   get "/dashboard/", to: "accounts#dashboard"
    
    authenticated :account do 
       root to: "accounts#dashboard"

@@ -16,11 +16,11 @@ module ApplicationHelper
    end
 
    def dashboard_heading
-      if current_page?(root_path)
+      if current_page?(root_path) || current_page?("/dashboard")
          "Your Account Dashboard"
       elsif current_page?(new_baby_path)    
-         "Create A New Baby Dashboard"
-      elsif current_page?(controller: "babies", action: :show)    
+         "Create Your Baby's New Dashboard"
+      elsif current_page?(controller: "babies", action: :show)     
          "#{@baby.name}'s Dashboard"      
       end
    end

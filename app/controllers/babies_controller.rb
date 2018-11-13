@@ -1,6 +1,7 @@
 class BabiesController < ApplicationController
    before_action :authenticate_account!
    before_action :set_account
+   before_action :check_for_allowed_accounts, only: [:show]
    layout "authenticated", except: [:start]
 
    def new      
@@ -17,7 +18,7 @@ class BabiesController < ApplicationController
    end
 
    def create      
-      @baby = @account.babies.new(baby_params)
+      @baby = current_account.babies.new(baby_params)
       if @baby.save
          flash[:success] = "A dashboard for #{@baby.name} has been created!"
          redirect_to baby_path(@baby)
@@ -29,11 +30,18 @@ class BabiesController < ApplicationController
 
    private
 
+   def check_for_allowed_accounts
+      @account = current_account
+      @baby = Baby.friendly.find(params[:id])
+      redirect_to(accounts_path(current_account)) unless @baby.account == @account
+      flash[:error] = "Sorry you don't have permissions for that."      
+   end
+
    def set_account
       @account = current_account
    end
 
    def baby_params
-      params.require(:baby).permit(:name, :gender, :dob, :hight, :weight)
+      params.require(:baby).permit(:name, :gender, :dob, :height, :weight)
    end
 end

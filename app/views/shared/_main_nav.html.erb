@@ -12,10 +12,18 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <% if account_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "Log out", destroy_account_session_path, method: :delete, data: {confirm: "You are logging out. Are you sure?"}, class: "nav-link" %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= @account.first_name %> <%= @account.last_name %>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right animation slideDownIn" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to "Account Home", root_path, class: "dropdown-item" %>
+              <%= link_to "Settings", edit_account_registration_path, class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "Log out", destroy_account_session_path, method: :delete, data: {confirm: "You are logging out. Are you sure?"}, class: "dropdown-item" %>              
+            </div>
           </li>
-        <% else %>
+          <% else %>
           <li class="nav-item">
             <a class="nav-link" href="#">Features</a>
           </li>

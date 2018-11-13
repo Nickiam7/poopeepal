@@ -12,7 +12,26 @@
                </div>
                <div class="col-md-3">
                   <div class="baby baby__sidebar">
-                     <h2>Hi there</h2>
+                     <h2><%= @baby.name %></h2>
+                     <dl class="row">
+                        <dt class="col-sm-5">DOB:</dt>
+                        <dd class="col-sm-7"><%= @baby.dob.strftime("%b %e, %Y") %></dd>
+                     </dl>
+                     <dl class="row">
+                        <dt class="col-sm-5">Gender:</dt>
+                        <dd class="col-sm-7"><%= @baby.gender %></dd>
+                     </dl>
+                     <dl class="row">
+                        <dt class="col-sm-5">Weight:</dt>
+                        <%
+
+                        %>
+                        <dd class="col-sm-7"><%= @baby.weight %> lbs</dd>
+                     </dl>
+                     <dl class="row">
+                        <dt class="col-sm-5">Height</dt>
+                        <dd class="col-sm-7"><%= @baby.height %> inches</dd>
+                     </dl>
                   </div>
                </div>
             </div>         
