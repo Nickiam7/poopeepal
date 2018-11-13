@@ -5,7 +5,10 @@
 }
 .baby__sidebar {
    background: #fdfdfd;
-   border-left: 1px solid $gray-200;
+   border-top: 1px solid $gray-200;
+   @media(min-width: 768px) {
+      border-left: 1px solid $gray-200;
+   }
    dl {
       margin-bottom: 0;
    }

@@ -5,32 +5,40 @@
             <div class="row">
                <div class="col-md-9">
                   <div class="baby baby__main">
-                     <%= @baby.name %>
-                     <%= @baby.dob %>
-                     <%= @baby.gender %>
+                     <div class="d-inline float-right pt-3">
+                        <div class="btn-group" role="group">
+                           <%= link_to "#", class: "btn btn-sm" do %>
+                              <%= fa_icon("list") %> List View
+                           <% end %>
+                           <%= link_to "#", class: "btn btn-sm" do %>
+                              <%= fa_icon("calendar") %> Calendar View
+                           <% end %>
+                        </div>
+                     </div>
+                     <h1 class="border-bottom">Entries</h1>
                   </div>
                </div>
                <div class="col-md-3">
                   <div class="baby baby__sidebar">
                      <h2><%= @baby.name %></h2>
                      <dl class="row">
-                        <dt class="col-sm-5">DOB:</dt>
-                        <dd class="col-sm-7"><%= @baby.dob.strftime("%b %e, %Y") %></dd>
+                        <dt class="col-xl-5">DOB:</dt>
+                        <dd class="col-xl-7"><%= @baby.dob.strftime("%b %e, %Y") %></dd>
                      </dl>
                      <dl class="row">
-                        <dt class="col-sm-5">Gender:</dt>
-                        <dd class="col-sm-7"><%= @baby.gender %></dd>
+                        <dt class="col-xl-5">Gender:</dt>
+                        <dd class="col-xl-7"><%= @baby.gender %></dd>
                      </dl>
                      <dl class="row">
-                        <dt class="col-sm-5">Weight:</dt>
+                        <dt class="col-xl-5">Weight:</dt>
                         <%
 
                         %>
-                        <dd class="col-sm-7"><%= @baby.weight %> lbs</dd>
+                        <dd class="col-xl-7"><%= @baby.weight %> lbs</dd>
                      </dl>
                      <dl class="row">
-                        <dt class="col-sm-5">Height</dt>
-                        <dd class="col-sm-7"><%= @baby.height %> inches</dd>
+                        <dt class="col-xl-5">Height</dt>
+                        <dd class="col-xl-7"><%= @baby.height %> inches</dd>
                      </dl>
                   </div>
                </div>
