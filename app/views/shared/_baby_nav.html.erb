@@ -1,8 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-light navbar--main-nav <%= "auth--main-nav" if account_signed_in? %>">
+<nav class="navbar navbar-expand-md navbar-light auth--main-nav">
   <div class="container">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag("ppp-logo.svg", class: "d-inline-block align-top", width: 30) %>
-      PooPeePal
+    <% if current_page?(babies_start_path) %>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag("ppp-logo.svg", class: "d-inline-block align-top", width: 30) %>
+      <% end %>
+    <% end %>
+    <%= link_to "#", class: "navbar-brand" do %>
+      <% if current_page?(babies_start_path) %>
+        <span class="ml-5">Create your first Baby Dashboard</span>
+      <% else %>
+        <%= dashboard_heading %>
+      <% end %>
     <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="icon-bar"></span> 
@@ -23,7 +31,7 @@
               <%= link_to "Log out", destroy_account_session_path, method: :delete, data: {confirm: "You are logging out. Are you sure?"}, class: "dropdown-item" %>              
             </div>
           </li>
-          <% else %>
+        <% else %>
           <li class="nav-item">
             <a class="nav-link" href="#">Features</a>
           </li>

@@ -1,0 +1,49 @@
+.baby {
+   padding: 1.25rem;
+}
+.baby__main {
+}
+.baby__sidebar {
+   background: #fdfdfd;
+   border-top: 1px solid $gray-200;
+   @media(min-width: 768px) {
+      border-left: 1px solid $gray-200;
+   }
+   dl {
+      margin-bottom: 0;
+   }
+}
+.new-baby {
+   .form-group {
+      margin: {
+         top: 3rem;
+         bottom: 3rem;
+      }
+      label {
+         font-weight: 700;
+      }
+   }
+   .baby-error {
+      border: 1px solid $danger;
+   }
+   div.field_with_errors { 
+      display: inline-block; 
+   }
+   .datetimepicker-input {
+      cursor: pointer;
+   }
+   .has-icon .form-control {
+      padding-left: 2.375rem;
+   }
+   .has-icon .form-control-icon {
+      position: absolute;
+      z-index: 2;
+      display: block;
+      width: 2.375rem;
+      height: 2.375rem;
+      line-height: 2.375rem;
+      text-align: center;
+      pointer-events: none;
+      color: #aaa;
+   }
+}
