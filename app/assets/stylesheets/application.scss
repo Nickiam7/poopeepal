@@ -16,6 +16,18 @@ header {
    background: $gradient;
    padding-bottom: 50px;
 }
+.flash-alert {
+   position: absolute;
+   padding: {
+      top: 20px;
+      bottom: 20px;
+   }
+   top: 0;
+   width: 100%;
+   margin-bottom: 0;
+   z-index: 2;
+   opacity: 0.9;
+}
 .box-shadow {
    box-shadow: $box-shadow;
 }
@@ -25,7 +37,6 @@ header {
    }
    border: 1px solid $danger;
 }
-
 .sidebar {
    position: sticky;
    background: $body-color;

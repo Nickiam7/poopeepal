@@ -31,11 +31,11 @@ class BabiesController < ApplicationController
    private
 
    def check_for_allowed_accounts
-      @account = current_account
-      @baby = Baby.friendly.find(params[:id])
-      unless @baby.account == @account
+      account = current_account
+      baby = Baby.friendly.find(params[:id])
+      unless baby.account == account
          redirect_to(accounts_path(current_account))
-         flash[:error] = "Sorry you don't have permissions for that."      
+         flash[:error] = "Sorry, you don't have permissions to view this dashboard."      
       end
    end
 

@@ -28,4 +28,10 @@ document.addEventListener("turbolinks:load", function() {
          $('.navbar--main-nav').removeClass('navbar--main-nav-scroll');
       }
    });
+
+   setTimeout(function() {
+      $('.flash-alert').fadeOut('slow', function() {
+         $(this).remove();
+      });
+   },3500);
 });
