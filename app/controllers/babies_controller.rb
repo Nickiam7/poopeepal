@@ -33,8 +33,10 @@ class BabiesController < ApplicationController
    def check_for_allowed_accounts
       @account = current_account
       @baby = Baby.friendly.find(params[:id])
-      redirect_to(accounts_path(current_account)) unless @baby.account == @account
-      flash[:error] = "Sorry you don't have permissions for that."      
+      unless @baby.account == @account
+         redirect_to(accounts_path(current_account))
+         flash[:error] = "Sorry you don't have permissions for that."      
+      end
    end
 
    def set_account
