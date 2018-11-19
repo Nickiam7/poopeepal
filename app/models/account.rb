@@ -4,4 +4,5 @@ class Account < ApplicationRecord
          :trackable
 
    has_many :babies, dependent: :destroy
+   has_many :entries, dependent: :destroy
 end

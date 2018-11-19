@@ -10,6 +10,8 @@ class BabiesController < ApplicationController
 
    def show      
       @baby = Baby.friendly.find(params[:id])
+      @entries = @baby.entries.order(created_at: :desc).group_by {|entry| entry.created_at.beginning_of_month}
+      @entry = Entry.new
    end
 
    def start      

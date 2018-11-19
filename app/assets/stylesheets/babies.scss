@@ -2,11 +2,36 @@
    padding: 1.25rem;
 }
 .baby__main {
+   .list-group__heading {
+      background: $gray-100;
+      position: -webkit-sticky;
+      position: sticky;
+      padding: 0.5rem;
+      top: 57px;
+      z-index: 1;
+      margin-bottom: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.125);
+      border-right: 1px solid rgba(0, 0, 0, 0.125);
+      border-left: 1px solid rgba(0, 0, 0, 0.125);
+   }
+   .list-group-item:hover {
+      z-index: 0;
+   }
+   .metric {
+      text-align: center;
+      &__data {
+         display: block;
+         margin-bottom: 0;
+         font-size: 18px;
+      }
+   }
 }
 .baby__sidebar {
    background: #fdfdfd;
    border-top: 1px solid $gray-200;
+   height: 100%;
    @media(min-width: 768px) {
+      border-top: none;
       border-left: 1px solid $gray-200;
    }
    dl {

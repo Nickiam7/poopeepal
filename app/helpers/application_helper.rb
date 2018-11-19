@@ -21,7 +21,9 @@ module ApplicationHelper
       elsif current_page?(new_baby_path)    
          "Create Your Baby's New Dashboard"
       elsif current_page?(controller: "babies", action: :show)     
-         "#{@baby.name}'s Dashboard"      
+         "#{@baby.name}'s Dashboard"
+      elsif current_page?(controller: "entries", action: :show)      
+         "#{@entry.created_at.strftime("%A, %b %d, %Y")}"
       end
    end
 

@@ -10,6 +10,7 @@ class Baby < ApplicationRecord
    end
 
    belongs_to :account
+   has_many :entries, dependent: :destroy
 
    validates :name, :dob, presence: true
 end
