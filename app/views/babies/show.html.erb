@@ -1,11 +1,11 @@
 <main>
 <div class="container">
    <div class="card">
-      <div class="card-body box-shadow p-0">         
+      <div class="card-body box-shadow pt-0">         
             <div class="row">
                <div class="col-md-8">
                   <div class="baby baby__main">
-                     <div class="d-inline float-right pt-3">
+                     <div class="d-inline float-right pt-3 pr-0">
                         <div class="btn-group" role="group">
                            <%= link_to "#", class: "btn btn-sm" do %>
                               <%= fa_icon("list") %> List View
@@ -17,32 +17,33 @@
                      </div>
                      <h1 class="border-bottom mb-4">Entries</h1>
                      <div class="list-group">
-                        <% @entries.keys.sort { |a, b| b <=> a }.each do |month| %>
+                        <% @entries.keys.sort {|a, b| b <=> a}.each do |month| %>
                            <h2 class="list-group__heading"><%= month.strftime("%B") %></h2>
                            <% for entry in @entries[month] %>
-                              <%= link_to baby_entry_path(@baby, entry), class: "list-group-item list-group-item-action flex-column align-items-start" do %>         
-                                 <div class="d-flex w-100 justify-content-between">                          
-                                    <h4 class="mb-1"><%= entry.created_at.strftime("%A, %B %e, %Y") %></h4>
-                                    <small class="text-primary">View Entry <%= fa_icon("chevron-right") %></small> 
-                                 </div>
-                                 <div class="row py-md-3">
-                                   <div class="col-6 col-md-3 metric text-primary">
-                                       <h3 class="metric__data">20oz</h3>
-                                       <%= fa_icon("cutlery") %> 
+                              <%= link_to baby_entry_path(@baby, entry), class: "list-group-item list-group-item-action flex-column" do %>         
+                                 <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                    <h3 class="metric-date align-self-center">
+                                       <%= entry.created_at.strftime("%A, %B %e, %Y") %>
+                                    </h3>
+                                    <div class="d-flex justify-content-between">
+                                       <div class="metric text-success">
+                                          <h3 class="metric__data">20oz</h3>
+                                          <%= fa_icon("cutlery") %> 
+                                       </div>
+                                       <div class="metric">
+                                          <h3 class="metric__data">7 Changes</h3>
+                                          <%= image_tag("diaper--dark.svg", width: 18) %>
+                                       </div>
+                                       <div class="metric text-danger">
+                                          <h3 class="metric__data">10 hours</h3>
+                                          <%= fa_icon("bed") %>
+                                       </div>
+                                       <div class="metric text-primary">
+                                          <h3 class="metric__data"><%= fa_icon("check") %></h3>
+                                          <%= fa_icon("bath") %>
+                                       </div>
                                     </div>
-                                    <div class="col-6 col-md-3 metric">
-                                       <h3 class="metric__data">20oz</h3>
-                                       <%= image_tag("diaper--dark.svg", width: 18, class: "text-danger") %>
-                                    </div>
-                                    <div class="col-6 col-md-3 metric text-danger">
-                                       <h3 class="metric__data">20oz</h3>
-                                       <%= fa_icon("bed") %>
-                                    </div>
-                                    <div class="col-6 col-md-3 metric text-success">
-                                       <h3 class="metric__data">20oz</h3>
-                                       <%= fa_icon("bath") %>
-                                    </div>
-                                 </div>
+                                 </div>                              
                               <% end %>  
                            <% end %>
                         <% end %>
