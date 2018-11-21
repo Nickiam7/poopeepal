@@ -31,6 +31,12 @@
         <%= f.text_field :last_name, class: "form-control" %>
       </div>
     </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :time_zone %><br />
+        <%= f.time_zone_select :time_zone, nil, {default: "Central Time (US & Canada)"}, {class: "custom-select"} %>
+      </div>
+    </div>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
