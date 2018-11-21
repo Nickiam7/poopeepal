@@ -1,7 +1,7 @@
-<main>
+<main style="height: calc(100vh - 155px);">
 <div class="container">
    <div class="card">
-      <div class="card-body box-shadow pt-0">         
+      <div class="card-body box-shadow py-0">         
             <div class="row">
                <div class="col-md-8">
                   <div class="baby baby__main">
@@ -18,38 +18,51 @@
                            </div>
                         </div>
                      </div>
-                     <div class="list-group">
-                        <% @entries.keys.sort {|a, b| b <=> a}.each do |month| %>
-                           <h2 class="list-group__heading"><%= month.strftime("%B") %></h2>
-                           <% for entry in @entries[month] %>
-                              <%= link_to baby_entry_path(@baby, entry), class: "list-group-item list-group-item-action flex-column" do %>         
-                                 <div class="d-flex flex-column flex-lg-row justify-content-between">
-                                    <h3 class="metric-date align-self-center">
-                                       <%= entry.created_at.strftime("%A, %B %e, %Y") %>
-                                    </h3>
-                                    <div class="d-flex justify-content-between">
-                                       <div class="metric text-success">
-                                          <h3 class="metric__data">20oz</h3>
-                                          <%= fa_icon("cutlery") %> 
+                     <% if @entries.any? %>
+                        <div class="list-group">                        
+                           <% @entries.keys.sort {|a, b| b <=> a}.each do |month| %>
+                              <h2 class="list-group__heading"><%= month.strftime("%B") %></h2>
+                              <% for entry in @entries[month] %>
+                                 <%= link_to baby_entry_path(@baby, entry), class: "list-group-item list-group-item-action flex-column" do %>         
+                                    <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                       <h3 class="metric-date align-self-center">
+                                          <%= entry.created_at.strftime("%A, %B %e, %Y") %>
+                                       </h3>
+                                       <div class="d-flex justify-content-between">
+                                          <div class="metric text-success">
+                                             <h3 class="metric__data">20oz</h3>
+                                             <%= fa_icon("cutlery") %> 
+                                          </div>
+                                          <div class="metric">
+                                             <h3 class="metric__data">7 Changes</h3>
+                                             <%= image_tag("diaper--dark.svg", width: 18) %>
+                                          </div>
+                                          <div class="metric text-danger">
+                                             <h3 class="metric__data">10 hours</h3>
+                                             <%= fa_icon("bed") %>
+                                          </div>
+                                          <div class="metric text-primary">
+                                             <h3 class="metric__data"><%= fa_icon("check") %></h3>
+                                             <%= fa_icon("bath") %>
+                                          </div>
                                        </div>
-                                       <div class="metric">
-                                          <h3 class="metric__data">7 Changes</h3>
-                                          <%= image_tag("diaper--dark.svg", width: 18) %>
-                                       </div>
-                                       <div class="metric text-danger">
-                                          <h3 class="metric__data">10 hours</h3>
-                                          <%= fa_icon("bed") %>
-                                       </div>
-                                       <div class="metric text-primary">
-                                          <h3 class="metric__data"><%= fa_icon("check") %></h3>
-                                          <%= fa_icon("bath") %>
-                                       </div>
-                                    </div>
-                                 </div>                              
-                              <% end %>  
+                                    </div>                              
+                                 <% end %>  
+                              <% end %>
                            <% end %>
+                        </div>
+                     <% else %>
+                     <div class="border-top text-center pt-5">
+                        <h2>Welcome to <%= @baby.name %>'s new dashboard!</h2>
+                        <p class="lead">You haven't created any entries for <%= @baby.name %> yet.</p>
+                        <%= form_for([@baby, @entry]) do |f| %>
+                          <%= f.button class: "btn btn-primary mx-auto mt-3 mb-5", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Adding Entry..."} do %>
+                            <%= fa_icon("plus") %> 
+                            Start Tracking Now!
+                          <% end %>
                         <% end %>
                      </div>
+                     <% end %>
                   </div>
                </div>
                <div class="col-md-4">
