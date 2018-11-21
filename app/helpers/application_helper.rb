@@ -21,7 +21,18 @@ module ApplicationHelper
       elsif current_page?(new_baby_path)    
          "Create Your Baby's New Dashboard"
       elsif current_page?(controller: "babies", action: :show)     
-         "#{@baby.name}'s Dashboard"      
+         "#{@baby.name}'s Dashboard"
+      elsif current_page?(controller: "entries", action: :show)      
+         "#{@entry.created_at.strftime("%A, %b %d, %Y")}"
+      end
+   end
+
+   def flash_class(key)
+      case key
+      when "success" then "alert alert-success"
+      when "error" then "alert alert-danger"
+      when "alert" then "alert alert-danger"
+      when "notice" then "alert alert-success"
       end
    end
 end

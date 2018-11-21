@@ -1,12 +1,52 @@
 .baby {
-   padding: 1.25rem;
+   padding-top: 1.25rem;
 }
 .baby__main {
+   .list-group__heading {
+      background: $gray-100;
+      position: -webkit-sticky;
+      position: sticky;
+      font-size: 22px;
+      padding: 0.5rem;
+      top: 56px;
+      z-index: 1;
+      margin-bottom: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.125);
+      border-right: 1px solid rgba(0, 0, 0, 0.125);
+      border-left: 1px solid rgba(0, 0, 0, 0.125);
+   }
+   .list-group-item {
+      &:hover, &:focus  {
+         z-index: 0;
+         background: #fdfdfd;
+      }
+   }
+   .metric-date {
+      margin-bottom: 15px;
+      font-size: 16px;         
+      @media(min-width: 768px) { 
+         margin-bottom: 0;
+      }
+   }
+   .metric {
+      text-align: center;
+      padding: {
+         left: 1rem;
+         right: 1rem;
+      }
+      &__data {         
+         margin-bottom: 0;
+         font-size: 12px;
+      }
+   }
 }
 .baby__sidebar {
+   padding: 1.25rem;
    background: #fdfdfd;
    border-top: 1px solid $gray-200;
+   height: 100%;
    @media(min-width: 768px) {
+      border-top: none;
       border-left: 1px solid $gray-200;
    }
    dl {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_10_190420) do
+ActiveRecord::Schema.define(version: 2018_11_21_163556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_11_10_190420) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.string "time_zone", default: "Central Time (US & Canada)"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
@@ -49,6 +50,15 @@ ActiveRecord::Schema.define(version: 2018_11_10_190420) do
     t.index ["slug"], name: "index_babies_on_slug", unique: true
   end
 
+  create_table "entries", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "baby_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_entries_on_account_id"
+    t.index ["baby_id"], name: "index_entries_on_baby_id"
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -62,4 +72,6 @@ ActiveRecord::Schema.define(version: 2018_11_10_190420) do
   end
 
   add_foreign_key "babies", "accounts"
+  add_foreign_key "entries", "accounts"
+  add_foreign_key "entries", "babies"
 end

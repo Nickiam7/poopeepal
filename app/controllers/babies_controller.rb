@@ -10,6 +10,8 @@ class BabiesController < ApplicationController
 
    def show      
       @baby = Baby.friendly.find(params[:id])
+      @entries = @baby.entries.order(created_at: :desc).group_by {|entry| entry.created_at.beginning_of_month}
+      @entry = Entry.new
    end
 
    def start      
@@ -31,10 +33,12 @@ class BabiesController < ApplicationController
    private
 
    def check_for_allowed_accounts
-      @account = current_account
-      @baby = Baby.friendly.find(params[:id])
-      redirect_to(accounts_path(current_account)) unless @baby.account == @account
-      flash[:error] = "Sorry you don't have permissions for that."      
+      account = current_account
+      baby = Baby.friendly.find(params[:id])
+      unless baby.account == account
+         redirect_to(accounts_path(current_account))
+         flash[:error] = "Sorry, you don't have permissions to view this dashboard."      
+      end
    end
 
    def set_account

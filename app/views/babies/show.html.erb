@@ -1,45 +1,93 @@
-<main>
+<main style="height: calc(100vh - 155px);">
 <div class="container">
    <div class="card">
-      <div class="card-body box-shadow p-0">         
+      <div class="card-body box-shadow py-0">         
             <div class="row">
-               <div class="col-md-9">
+               <div class="col-md-8">
                   <div class="baby baby__main">
-                     <div class="d-inline float-right pt-3">
-                        <div class="btn-group" role="group">
-                           <%= link_to "#", class: "btn btn-sm" do %>
-                              <%= fa_icon("list") %> List View
-                           <% end %>
-                           <%= link_to "#", class: "btn btn-sm" do %>
-                              <%= fa_icon("calendar") %> Calendar View
-                           <% end %>
+                     <div class="d-flex flex-column flex-md-row justify-content-between">
+                        <h1 class="">Entries</h1>
+                        <div class="align-self-center">
+                           <div class="btn-group" role="group">
+                              <%= link_to "#", class: "btn btn-sm" do %>
+                                 <%= fa_icon("list") %> List View
+                              <% end %>
+                              <%= link_to "#", class: "btn btn-sm" do %>
+                                 <%= fa_icon("calendar") %> Calendar View
+                              <% end %>
+                           </div>
                         </div>
                      </div>
-                     <h1 class="border-bottom">Entries</h1>
+                     <% if @entries.any? %>
+                        <div class="list-group">                        
+                           <% @entries.keys.sort {|a, b| b <=> a}.each do |month| %>
+                              <h2 class="list-group__heading"><%= month.strftime("%B") %></h2>
+                              <% for entry in @entries[month] %>
+                                 <%= link_to baby_entry_path(@baby, entry), class: "list-group-item list-group-item-action flex-column" do %>         
+                                    <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                       <h3 class="metric-date align-self-center">
+                                          <%= entry.created_at.strftime("%A, %B %e, %Y") %>
+                                       </h3>
+                                       <div class="d-flex justify-content-between">
+                                          <div class="metric text-success">
+                                             <h3 class="metric__data">20oz</h3>
+                                             <%= fa_icon("cutlery") %> 
+                                          </div>
+                                          <div class="metric">
+                                             <h3 class="metric__data">7 Changes</h3>
+                                             <%= image_tag("diaper--dark.svg", width: 18) %>
+                                          </div>
+                                          <div class="metric text-danger">
+                                             <h3 class="metric__data">10 hours</h3>
+                                             <%= fa_icon("bed") %>
+                                          </div>
+                                          <div class="metric text-primary">
+                                             <h3 class="metric__data"><%= fa_icon("check") %></h3>
+                                             <%= fa_icon("bath") %>
+                                          </div>                                          
+                                       </div>
+                                    </div>                              
+                                 <% end %>  
+                              <% end %>
+                           <% end %>
+                        </div>
+                     <% else %>
+                     <div class="border-top text-center pt-5">
+                        <h2>Welcome to <%= @baby.name %>'s new dashboard!</h2>
+                        <p class="lead">You haven't created any entries for <%= @baby.name %> yet.</p>
+                        <%= form_for([@baby, @entry]) do |f| %>
+                          <%= f.button class: "btn btn-primary mx-auto mt-3 mb-5", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Adding Entry..."} do %>
+                            <%= fa_icon("plus") %> 
+                            Start Tracking Now!
+                          <% end %>
+                        <% end %>
+                     </div>
+                     <% end %>
                   </div>
                </div>
-               <div class="col-md-3">
+               <div class="col-md-4">
                   <div class="baby baby__sidebar">
-                     <h2><%= @baby.name %></h2>
-                     <dl class="row">
-                        <dt class="col-xl-5">DOB:</dt>
-                        <dd class="col-xl-7"><%= @baby.dob.strftime("%b %e, %Y") %></dd>
-                     </dl>
-                     <dl class="row">
-                        <dt class="col-xl-5">Gender:</dt>
-                        <dd class="col-xl-7"><%= @baby.gender %></dd>
-                     </dl>
-                     <dl class="row">
-                        <dt class="col-xl-5">Weight:</dt>
-                        <%
-
-                        %>
-                        <dd class="col-xl-7"><%= @baby.weight %> lbs</dd>
-                     </dl>
-                     <dl class="row">
-                        <dt class="col-xl-5">Height</dt>
-                        <dd class="col-xl-7"><%= @baby.height %> inches</dd>
-                     </dl>
+                     <div class="sidebar__section sidebar__section--info">
+                        <h2 class="h4"><%= @baby.name %></h2>
+                        <dl class="row">
+                           <dt class="col-sm-6 col-md-12 col-xl-5">DOB:</dt>
+                           <dd class="col-sm-6 col-md-12 col-xl-7"><%= @baby.dob.strftime("%b %e, %Y") %></dd>
+                        </dl>
+                        <dl class="row">
+                           <dt class="col-sm-6 col-md-12 col-xl-5">Gender:</dt>
+                           <dd class="col-sm-6 col-md-12 col-xl-7"><%= @baby.gender %></dd>
+                        </dl>
+                        <dl class="row">
+                           <dt class="col-sm-6 col-md-12 col-xl-5">Weight:</dt>
+                           <dd class="col-sm-6 col-md-12 col-xl-7"><%= @baby.weight %> lbs</dd>
+                        </dl>
+                        <dl class="row">
+                           <dt class="col-sm-6 col-md-12 col-xl-5">Height</dt>
+                           <dd class="col-sm-6 col-md-12 col-xl-7"><%= @baby.height %> inches</dd>
+                        </dl>
+                     </div>
+                     <div class="sidebar__section sidebar__section--collabs">
+                     </div>
                   </div>
                </div>
             </div>         

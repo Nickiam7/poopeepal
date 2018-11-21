@@ -13,10 +13,7 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    <% end %>
+    <%= render partial: "shared/flash" %>
     <div class="wrapper">
       <%= render partial: "shared/main_nav" unless current_page?(new_account_session_path) %>
       <%= yield %>
