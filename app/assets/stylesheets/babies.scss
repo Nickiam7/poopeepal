@@ -1,14 +1,12 @@
 .baby {
-   padding: 0;
-   @media(min-width: 768px) {      
-      padding-top: 1.25rem;
-   }
+   padding-top: 1.25rem;
 }
 .baby__main {
    .list-group__heading {
       background: $gray-100;
       position: -webkit-sticky;
       position: sticky;
+      font-size: 22px;
       padding: 0.5rem;
       top: 56px;
       z-index: 1;
