@@ -15,7 +15,7 @@
   <body>
     <%= render partial: "shared/flash" %>
     <div class="row no-gutters">
-      <div class="col-1 col-lg-2 sidebar">
+      <div class="d-none d-md-inline-block col-md-1 col-lg-2 sidebar">
         <%= link_to root_path, class: "navbar-brand" do %>
           <%= image_tag("ppp-logo.svg", class: "d-block align-top mx-auto", width: 50) %>
         <% end %>
@@ -24,10 +24,12 @@
             <%= render partial: "shared/sidebar_babies_nav" %>
           <% elsif controller_name == "accounts" %>
             <%= render partial: "shared/sidebar_account_nav" %>
+          <% elsif controller_name == "entries" %>
+            <%= render partial: "shared/sidebar_entries_nav" %>
           <% end %>
         </nav>
       </div>
-      <div class="col-11 col-lg-10">
+      <div class="col-12 col-md-11 col-lg-10">
         <div class="wrapper">
           <%= render partial: "shared/baby_nav" %>
           <%= yield %>
