@@ -38,7 +38,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <%= f.label :time_zone %>
-              <%= f.time_zone_select :time_zone, nil, {default: "Central Time (US & Canada)"}, {class: "custom-select form-control"} %>
+              <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, {default: "Central Time (US & Canada)"}, {class: "custom-select form-control"} %>
             </div>
           </div>
         </div>
