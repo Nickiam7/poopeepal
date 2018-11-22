@@ -32,7 +32,7 @@
    <div class="form-group row">
       <%= f.label :gender, class: "col-lg-2 col-form-label" %>
       <div class="col-lg-10">
-         <%= f.select(:gender, options_for_select([["Male", "Male"],["Female", "Femal"], ["Other", "Other"]]), {prompt: "Select Gender"}, {class: "custom-select"} ) %>                  
+         <%= f.select(:gender, options_for_select([["Male", "Male"],["Female", "Femal"], ["Other", "Other"]]), {prompt: "Select Gender"}, {class: "custom-select form-control"} ) %>                  
          <small id="genderHelpBlock" class="form-text text-muted font-italic">
            *Optional
          </small>
