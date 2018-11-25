@@ -23,7 +23,7 @@
     <%= fa_icon("edit") %> 
     <span class="d-none d-lg-inline-block">Edit</span>
   <% end %>
-  <%= link_to root_path, class: "nav-link" do %>
+  <%= link_to baby_path(@baby), method: :delete, data: {confirm: "Are you sure?"}, class: "nav-link" do %>
     <%= fa_icon("trash-o") %> 
     <span class="d-none d-lg-inline-block">Delete</span>
   <% end %>

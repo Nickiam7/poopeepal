@@ -1,7 +1,7 @@
 class BabiesController < ApplicationController
    before_action :authenticate_account!
    before_action :set_account
-   before_action :check_for_allowed_accounts, only: [:show]
+   before_action :check_for_allowed_accounts, only: [:create, :show, :edit, :destroy]
    layout "authenticated", except: [:start]
 
    def new      
@@ -43,6 +43,16 @@ class BabiesController < ApplicationController
          flash[:error] = "Sorry we weren't able to update this dashboard. Please try again."
          render :edit
       end
+   end
+
+   def destroy
+      @baby = Baby.friendly.find(params[:id])
+      if @baby.destroy
+         flash[:success] = "#{@baby.name} was deleted"
+      else
+         flash[:error] = "Sorry we weren't able to delete this dashboard. Please try again."         
+      end
+      redirect_to root_path
    end
 
    private
