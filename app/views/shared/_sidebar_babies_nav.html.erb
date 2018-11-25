@@ -3,6 +3,11 @@
     <%= fa_icon("chevron-left") %> 
     <span class="d-none d-lg-inline-block">Back</span>
   <% end %>
+<% elsif current_page?(edit_baby_path(@baby)) %>
+  <%= link_to baby_path(@baby), class: "btn btn-primary mx-auto my-3 d-block w-75" do %>
+    <%= fa_icon("chevron-left") %> 
+    <span class="d-none d-lg-inline-block">Back</span>
+  <% end %>
 <% elsif current_page?(controller: "babies", action: "show") %>
   <%= form_for([@baby, @entry]) do |f| %>
     <%= f.button class: "btn btn-primary mx-auto my-3 d-block w-75", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Adding Entry..."} do %>
@@ -13,5 +18,13 @@
   <%= link_to root_path, class: "nav-link" do %>
     <%= fa_icon("home") %> 
     <span class="d-none d-lg-inline-block">Home</span>
+  <% end %>
+  <%= link_to edit_baby_path(@baby), class: "nav-link" do %>
+    <%= fa_icon("edit") %> 
+    <span class="d-none d-lg-inline-block">Edit</span>
+  <% end %>
+  <%= link_to root_path, class: "nav-link" do %>
+    <%= fa_icon("trash-o") %> 
+    <span class="d-none d-lg-inline-block">Delete</span>
   <% end %>
 <% end %>

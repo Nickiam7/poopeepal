@@ -30,6 +30,21 @@ class BabiesController < ApplicationController
       end
    end
 
+   def edit
+      @baby = Baby.friendly.find(params[:id])
+   end
+
+   def update
+      @baby = Baby.friendly.find(params[:id])
+      if @baby.update(baby_params)
+         flash[:success] = "#{@baby.name}'s Dashboard has been updated!"
+         redirect_to baby_path(@baby)
+      else
+         flash[:error] = "Sorry we weren't able to update this dashboard. Please try again."
+         render :edit
+      end
+   end
+
    private
 
    def check_for_allowed_accounts
