@@ -47,4 +47,9 @@ module ApplicationHelper
          "Create Dashboard"
       end 
    end
+
+   def baby_weight
+      weight = @baby.weight.split(".")
+      "#{weight[0]} lbs, #{weight[1]} oz"
+   end
 end
