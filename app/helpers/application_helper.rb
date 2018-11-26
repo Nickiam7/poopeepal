@@ -22,8 +22,12 @@ module ApplicationHelper
          "Create Your Baby's New Dashboard"
       elsif current_page?(controller: "babies", action: :show)     
          "#{@baby.name}'s Dashboard"
+      elsif current_page?(controller: "babies", action: :edit)      
+         "Edit #{@baby.name}'s Dashboard"
       elsif current_page?(controller: "entries", action: :show)      
          "#{@entry.created_at.strftime("%A, %b %d, %Y")}"
+      else
+         "PooPeePal"
       end
    end
 
@@ -34,5 +38,13 @@ module ApplicationHelper
       when "alert" then "alert alert-danger"
       when "notice" then "alert alert-success"
       end
+   end
+
+   def baby_submit_button_text
+      if @baby.id.present?
+         "Update Dashboard"
+      else
+         "Create Dashboard"
+      end 
    end
 end

@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
-   devise_for :accounts, controllers: { registrations: "registrations" }, path_names: {sign_in: "login", sign_out: "logout", sign_up: "register"}
+   devise_for :accounts, 
+               controllers: { registrations: "registrations" }, 
+               path_names: {sign_in: "login", sign_out: "logout", sign_up: "register"}
    
    get "/babies/start/", to: "babies#start"
-   resources :babies, only: [:show, :new, :create] do 
+   resources :babies do 
       resources :entries
    end
    get "/babies/", to: redirect("/")
