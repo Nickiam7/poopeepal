@@ -1,7 +1,7 @@
 class BabiesController < ApplicationController
    before_action :authenticate_account!
    before_action :set_account
-   before_action :check_for_allowed_accounts, only: [:create, :show, :edit, :destroy]
+   before_action :check_for_allowed_accounts, only: [:show, :edit, :destroy]
    layout "authenticated", except: [:start]
 
    def new      

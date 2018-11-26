@@ -23,7 +23,7 @@
       <%= f.label :dob, "Date of Birth", class: "col-lg-2 col-form-label" %>
       <div class="col-lg-10">
          <span class="fa fa-calendar form-control-icon"></span>                  
-         <%= f.text_field :dob, class: "form-control datetimepicker-input", data: {toggle: "datetimepicker", target: "#baby_dob"}, autocomplete: "off", value: f.object.dob.strftime("%A, %B %e ,%Y") %>
+         <%= f.text_field :dob, class: "form-control datetimepicker-input", data: {toggle: "datetimepicker", target: "#baby_dob"}, autocomplete: "off", value: f.object.dob.strftime("%A, %B %e, %Y") %>
          <small id="dobHelpBlock" class="form-text text-muted font-italic">
            *Required
          </small>
