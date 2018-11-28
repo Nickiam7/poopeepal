@@ -20,12 +20,14 @@ module ApplicationHelper
          "Your Account Dashboard"
       elsif current_page?(new_baby_path)    
          "Create Your Baby's New Dashboard"
-      elsif current_page?(controller: "babies", action: :show)     
+      elsif current_page?(baby_path(@baby))
          "#{@baby.name}'s Dashboard"
-      elsif current_page?(controller: "babies", action: :edit)      
+      elsif current_page?(edit_baby_path(@baby))
          "Edit #{@baby.name}'s Dashboard"
-      elsif current_page?(controller: "entries", action: :show)      
+      elsif current_page?(baby_entry_path(@baby, @entry))
          "#{@entry.created_at.strftime("%A, %b %d, %Y")}"
+      elsif current_page?(new_baby_entry_feeding_path(@baby, @entry))
+         "Tracking New Feeding"
       else
          "PooPeePal"
       end

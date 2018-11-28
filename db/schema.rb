@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_163556) do
+ActiveRecord::Schema.define(version: 2018_11_26_211733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 2018_11_21_163556) do
     t.index ["baby_id"], name: "index_entries_on_baby_id"
   end
 
+  create_table "feedings", force: :cascade do |t|
+    t.time "start_time"
+    t.time "end_time"
+    t.integer "amount"
+    t.bigint "entry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entry_id"], name: "index_feedings_on_entry_id"
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -74,4 +84,5 @@ ActiveRecord::Schema.define(version: 2018_11_21_163556) do
   add_foreign_key "babies", "accounts"
   add_foreign_key "entries", "accounts"
   add_foreign_key "entries", "babies"
+  add_foreign_key "feedings", "entries"
 end
