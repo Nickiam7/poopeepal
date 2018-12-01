@@ -2,14 +2,13 @@
 <div class="container">
    <div class="card">
       <div class="card-body box-shadow">         
-            <div class="row">
-               <div class="col-md-9">
-               <%= @entry.created_at %>
-               </div>
-            </div>
-         </div>
+         <%= @feedings.sum(:amount) %> oz
+         <% @feedings.order(created_at: :desc).each do |feeding| %>            
+            <%= feeding.start_time.strftime(" %l:%M %p") %> <====> <%= feeding.end_time.strftime(" %l:%M %p") %> | <%= feeding.amount %> oz<br>
+            Lenght: <%= ((feeding.end_time - feeding.start_time) / 1.minute).round %> Minutes
+         <% end %>
       </div>
    </div>
+</div>
 </main>
-
 <%= render partial: "entries/tracking/form_feeding" %>

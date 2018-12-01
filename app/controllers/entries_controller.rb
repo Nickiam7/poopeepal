@@ -5,6 +5,7 @@ class EntriesController < ApplicationController
       @baby = Baby.friendly.find(params[:baby_id])
       @entry = Entry.find(params[:id])
       @feeding = Feeding.new
+      @feedings = @entry.feedings.all
    end
 
    def create
