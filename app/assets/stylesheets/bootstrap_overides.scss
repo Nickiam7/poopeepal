@@ -19,3 +19,7 @@ label {
    border-top-left-radius: $border-radius;
    border-top-right-radius: $border-radius;
 }
+
+.table-striped tbody tr:nth-of-type(odd) {
+   background-color: $gray-100;
+}

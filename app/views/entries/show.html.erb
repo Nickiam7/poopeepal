@@ -1,14 +1,148 @@
-<main style="height: calc(100vh - 155px);">
+<main <%= style="height: calc(100vh - 155px);" if @feedings.any? %>>
 <div class="container">
    <div class="card">
-      <div class="card-body box-shadow">         
-         <%= @feedings.sum(:amount) %> oz
-         <% @feedings.order(created_at: :desc).each do |feeding| %>            
-            <%= feeding.start_time.strftime(" %l:%M %p") %> <====> <%= feeding.end_time.strftime(" %l:%M %p") %> | <%= feeding.amount %> oz<br>
-            Lenght: <%= ((feeding.end_time - feeding.start_time) / 1.minute).round %> Minutes
-         <% end %>
+      <div class="card-body box-shadow">
+         <div class="row">
+            <div class="col-md-4">
+               <div class="tracking">
+                  <div class="tracking-overview">
+                     <div class="tracking-overview__heading text-success">
+                        <h2><%= fa_icon("cutlery") %> Feedings</h2>          
+                        <p class="tracking-overview__details feeding-details">View Details<%= fa_icon("chevron-down", class: "ml-1") %></p>
+                     </div>
+                     <div class="tracking-overview__count text-success">
+                        <h3><%= @feedings.sum(:amount) %></h3><p>oz</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="tracking">
+                  <div class="tracking-overview">
+                     <div class="tracking-overview__heading">
+                        <h2><%= image_tag("diaper--dark.svg", width: 18) %> Changes</h2>
+                        <p class="tracking-overview__details changes-details">View Details<%= fa_icon("chevron-down", class: "ml-1") %></p>
+                     </div>
+                     <div class="tracking-overview__count">
+                        <h3>12</h3>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="tracking">
+                  <div class="tracking-overview">
+                     <div class="tracking-overview__heading text-danger">
+                        <h2><%= fa_icon("bed") %> Sleep</h2>
+                        <p class="tracking-overview__details sleep-details">View Details<%= fa_icon("chevron-down", class: "ml-1") %></p>
+                     </div>
+                     <div class="tracking-overview__count text-danger">
+                        <h3><%= @feedings.sum(:amount) %></h3><p>hours</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col">
+               <div class="feedings d-block">                  
+                  <h2>Feedings</h2>                  
+                  <table class="table table-striped">
+                     <thead>
+                        <tr>
+                           <th>Start Time</th>
+                           <th>End Time</th>
+                           <th>Duration</th>
+                           <th>Amount</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <% @feedings.order(created_at: :desc).each do |feeding| %>            
+                           <tr>
+                              <td><%= feeding.start_time.strftime(" %l:%M %p") %></td>
+                              <td><%= feeding.end_time.strftime(" %l:%M %p") %></td>
+                              <td><%= ((feeding.end_time - feeding.start_time) / 1.minute).round %> Minutes</td>
+                              <td><%= feeding.amount %> oz</td>
+                           </tr>
+                        <% end %>
+                     </tbody>  
+                  </table>
+               </div>
+               <div class="changes d-none">
+                  <h2>Chagnes</h2>
+                  <table class="table table-striped">
+                     <thead>
+                        <tr>
+                           <th>Start Time</th>
+                           <th>End Time</th>
+                           <th>Length</th>
+                           <th>Amount</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <% @feedings.order(created_at: :desc).each do |feeding| %>            
+                           <tr>
+                              <td><%= feeding.start_time.strftime(" %l:%M %p") %></td>
+                              <td><%= feeding.end_time.strftime(" %l:%M %p") %></td>
+                              <td><%= ((feeding.end_time - feeding.start_time) / 1.minute).round %> Minutes</td>
+                              <td><%= feeding.amount %> oz</td>
+                           </tr>
+                        <% end %>
+                     </tbody>  
+                  </table>
+               </div>
+               <div class="sleepings d-none">
+                  <h2>Sleeping</h2>
+                  <table class="table table-striped">
+                     <thead>
+                        <tr>
+                           <th>Start Time</th>
+                           <th>End Time</th>
+                           <th>Length</th>
+                           <th>Amount</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <% @feedings.order(created_at: :desc).each do |feeding| %>            
+                           <tr>
+                              <td><%= feeding.start_time.strftime(" %l:%M %p") %></td>
+                              <td><%= feeding.end_time.strftime(" %l:%M %p") %></td>
+                              <td><%= ((feeding.end_time - feeding.start_time) / 1.minute).round %> Minutes</td>
+                              <td><%= feeding.amount %> oz</td>
+                           </tr>
+                        <% end %>
+                     </tbody>  
+                  </table>
+               </div>
+            </div>
+         </div>
       </div>
    </div>
 </div>
 </main>
 <%= render partial: "entries/tracking/form_feeding" %>
+<script>
+   (function() {
+      $(document).on('turbolinks:load', function() {
+         let feedings = $('.feeding-details');
+         let changes = $('.changes-details');
+         let sleepings = $('.sleep-details');
+
+         feedings.on('click', function() {            
+            $('.feedings').addClass('d-block');
+            $('.sleepings').removeClass('d-block').addClass('d-none');
+            $('.changes').removeClass('d-block').addClass('d-none');
+         });
+         changes.on('click', function() {
+            $('.changes').addClass('d-block');
+            $('.feedings').removeClass('d-block').addClass('d-none');
+            $('.sleepings').removeClass('d-block').addClass('d-none');
+         });
+         sleepings.on('click', function() {
+            $('.sleepings').addClass('d-block');
+            $('.feedings').removeClass('d-block').addClass('d-none');
+            $('.changes').removeClass('d-block').addClass('d-none');
+         });
+      });
+   })();
+</script>
