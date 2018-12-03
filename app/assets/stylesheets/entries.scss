@@ -36,3 +36,29 @@
       }
    }
 }
+.tracking-changes {
+   display: flex;
+   padding: 0;
+   &__total {
+      width: 75%;
+      padding: 24px;
+   }
+   &__poo-pee {
+      display: flex;
+      flex-direction: column;
+      width: 25%;
+      border-left: 1px solid $gray-200;
+      font-size: 18px;
+      font-weight: 700;
+      .pee, .poo {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex: 1;
+         padding: 0 10px;
+      }
+      .pee {
+         border-bottom: 1px solid $gray-200;
+      }
+   }
+}

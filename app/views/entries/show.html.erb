@@ -23,8 +23,18 @@
                         <h2><%= image_tag("diaper--dark.svg", width: 18) %> Changes</h2>
                         <p class="tracking-overview__details changes-details">View Details<%= fa_icon("chevron-down", class: "ml-1") %></p>
                      </div>
-                     <div class="tracking-overview__count">
-                        <h3>12</h3>
+                     <div class="tracking-overview__count tracking-changes">
+                        <div class="tracking-changes__total">
+                           <h3>12</h3>
+                        </div>
+                        <div class="tracking-changes__poo-pee">
+                           <div class="pee">
+                              8 <%= image_tag("pee-drop.svg", class: "d-inline-block ml-2", width: 20, data: {toggle: "tooltip", placement: "right", html: "true", title: "#{@feedings.count} diapers were <u>pee</u> diapers" }) %>
+                           </div>
+                           <div class="poo">
+                              4 <%= image_tag("ppp-logo.svg", class: "d-inline-block ml-2", width: 28, data: {toggle: "tooltip", placement: "right", html: "true" ,title: "#{@feedings.count} diapers were <u>poo</u> diapers" }) %>
+                           </div>
+                        </div>
                      </div>
                   </div>
                </div>
@@ -37,7 +47,7 @@
                         <p class="tracking-overview__details sleep-details">View Details<%= fa_icon("chevron-down", class: "ml-1") %></p>
                      </div>
                      <div class="tracking-overview__count text-danger">
-                        <h3><%= @feedings.sum(:amount) %></h3><p>hours</p>
+                        <h3><%= @feedings.sum(:amount) %></h3><p>hrs</p>
                      </div>
                   </div>
                </div>
@@ -124,25 +134,22 @@
 <script>
    (function() {
       $(document).on('turbolinks:load', function() {
-         let feedings = $('.feeding-details');
-         let changes = $('.changes-details');
-         let sleepings = $('.sleep-details');
-
-         feedings.on('click', function() {            
+         $('.feeding-details').on('click', function() {            
             $('.feedings').addClass('d-block');
             $('.sleepings').removeClass('d-block').addClass('d-none');
             $('.changes').removeClass('d-block').addClass('d-none');
          });
-         changes.on('click', function() {
+         $('.changes-details').on('click', function() {
             $('.changes').addClass('d-block');
             $('.feedings').removeClass('d-block').addClass('d-none');
             $('.sleepings').removeClass('d-block').addClass('d-none');
          });
-         sleepings.on('click', function() {
+         $('.sleep-details').on('click', function() {
             $('.sleepings').addClass('d-block');
             $('.feedings').removeClass('d-block').addClass('d-none');
             $('.changes').removeClass('d-block').addClass('d-none');
          });
+         $('[data-toggle="tooltip"]').tooltip();
       });
    })();
 </script>
