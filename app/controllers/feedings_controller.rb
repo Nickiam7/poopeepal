@@ -20,6 +20,18 @@ class FeedingsController < ApplicationController
       redirect_to baby_entry_path(@baby, @entry)
    end
 
+   def destroy
+      @baby = Baby.friendly.find(params[:baby_id])
+      @entry = Entry.find(params[:entry_id])
+      @feeding = Feeding.find(params[:id])
+      if @feeding.destroy                
+         flash[:success] = "Feeding has been deleted"
+      else
+         flash[:error] = "Sorry, something went wrong"
+      end
+      redirect_to baby_entry_path(@baby, @entry)
+   end
+
    private
 
    def feeding_params

@@ -82,14 +82,13 @@
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right animation slideDownIn">
                                        <%= link_to "#", data: {toggle: "modal", 
-                                                               target: "#feedingModal",
-                                                               remote: edit_baby_entry_feeding_path(@baby, @entry, feeding)
+                                                               target: "#feedingModal"
                                                                }, 
                                                                class: "dropdown-item" do %>
                                           <%= fa_icon("edit") %> Edit
                                        <% end %>
                                        <div class="dropdown-divider"></div>
-                                       <%= link_to "#", class: "dropdown-item" do %>
+                                       <%= link_to baby_entry_feeding_path(@baby, @entry, feeding), method: :delete, class: "dropdown-item" do %>
                                           <%= fa_icon("trash", class: "text-danger") %> Delete
                                        <% end %>                                       
                                     </div>
