@@ -20,7 +20,7 @@
                <div class="tracking">
                   <div class="tracking-overview">
                      <div class="tracking-overview__heading">
-                        <h2><%= image_tag("diaper--dark.svg", width: 18) %> Changes</h2>
+                        <h2><%= image_tag("diaper--dark.svg", width: 18) %> Diapers</h2>
                         <p class="tracking-overview__details changes-details">View Details<%= fa_icon("chevron-down", class: "ml-1") %></p>
                      </div>
                      <div class="tracking-overview__count tracking-changes">
@@ -29,10 +29,10 @@
                         </div>
                         <div class="tracking-changes__poo-pee">
                            <div class="pee">
-                              8 <%= image_tag("pee-drop.svg", class: "d-inline-block ml-2", width: 20, data: {toggle: "tooltip", placement: "right", html: "true", title: "#{@feedings.count} diapers were <u>pee</u> diapers" }) %>
+                              8 <%= image_tag("pee-drop.svg", class: "d-inline-block ml-2", style: "max-width: 20px;", width: "100%", data: {toggle: "tooltip", placement: "right", html: "true", title: "#{@feedings.count} diapers contained <u><strong>pee</strong></u>" }) %>
                            </div>
                            <div class="poo">
-                              4 <%= image_tag("ppp-logo.svg", class: "d-inline-block ml-2", width: 28, data: {toggle: "tooltip", placement: "right", html: "true" ,title: "#{@feedings.count} diapers were <u>poo</u> diapers" }) %>
+                              4 <%= image_tag("ppp-logo.svg", class: "d-inline-block ml-2", style: "max-width: 24px;", width: "100%", data: {toggle: "tooltip", placement: "right", html: "true" ,title: "#{@feedings.count} diapers contained <u><strong>poo</strong></u> " }) %>
                            </div>
                         </div>
                      </div>
@@ -56,7 +56,8 @@
          <div class="row">
             <div class="col">
                <div class="feedings d-block">                  
-                  <h2>Feedings</h2>                  
+                  <h2 class="text-success"><%= fa_icon("cutlery", class: "cutlery animation") %> Feedings</h2>                  
+                  <% if @feedings.any? %>
                   <table class="table table-striped">
                      <thead>
                         <tr>
@@ -64,6 +65,7 @@
                            <th>End Time</th>
                            <th>Duration</th>
                            <th>Amount</th>
+                           <th class="text-center">Actions</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -73,13 +75,42 @@
                               <td><%= feeding.end_time.strftime(" %l:%M %p") %></td>
                               <td><%= ((feeding.end_time - feeding.start_time) / 1.minute).round %> Minutes</td>
                               <td><%= feeding.amount %> oz</td>
+                              <td class="text-center">
+                                 <div class="btn-group">
+                                    <button type="button" class="btn btn-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                       <%= fa_icon("ellipsis-v") %>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right animation slideDownIn">
+                                       <%= link_to "#", data: {toggle: "modal", 
+                                                               target: "#feedingModal",
+                                                               remote: edit_baby_entry_feeding_path(@baby, @entry, feeding)
+                                                               }, 
+                                                               class: "dropdown-item" do %>
+                                          <%= fa_icon("edit") %> Edit
+                                       <% end %>
+                                       <div class="dropdown-divider"></div>
+                                       <%= link_to "#", class: "dropdown-item" do %>
+                                          <%= fa_icon("trash", class: "text-danger") %> Delete
+                                       <% end %>                                       
+                                    </div>
+                                 </div>
+                              </td>
                            </tr>
                         <% end %>
                      </tbody>  
                   </table>
+                  <% else %>
+                     <div class="text-center p-3">
+                        <h2>You haven't tracked any feeding data yet.</h2>
+                        <%= link_to "#", data: {toggle: "modal", target: "#feedingModal"}, class: "btn btn-primary" do %>
+                          <%= fa_icon("plus") %>
+                          <span class="d-none d-lg-inline-block">Track Feeding</span>
+                        <% end %>
+                     </div>
+                  <% end %>
                </div>
                <div class="changes d-none">
-                  <h2>Chagnes</h2>
+                  <h2><%= image_tag("diaper--dark.svg", width: 36, class: "diaper animation") %> Diapers</h2>
                   <table class="table table-striped">
                      <thead>
                         <tr>
@@ -102,7 +133,7 @@
                   </table>
                </div>
                <div class="sleepings d-none">
-                  <h2>Sleeping</h2>
+                  <h2 class="text-danger"><%= fa_icon("bed", class: "bed animation") %> Sleep</h2>
                   <table class="table table-striped">
                      <thead>
                         <tr>
@@ -134,18 +165,21 @@
 <script>
    (function() {
       $(document).on('turbolinks:load', function() {
-         $('.feeding-details').on('click', function() {            
+         $('.feeding-details').on('click', function() {          
             $('.feedings').addClass('d-block');
+            $('.cutlery').addClass('slideDownIn');
             $('.sleepings').removeClass('d-block').addClass('d-none');
             $('.changes').removeClass('d-block').addClass('d-none');
          });
          $('.changes-details').on('click', function() {
             $('.changes').addClass('d-block');
+            $('.diaper').addClass('slideDownIn');
             $('.feedings').removeClass('d-block').addClass('d-none');
             $('.sleepings').removeClass('d-block').addClass('d-none');
          });
          $('.sleep-details').on('click', function() {
             $('.sleepings').addClass('d-block');
+            $('.bed').addClass('slideDownIn');
             $('.feedings').removeClass('d-block').addClass('d-none');
             $('.changes').removeClass('d-block').addClass('d-none');
          });
