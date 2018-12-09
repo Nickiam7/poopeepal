@@ -1,7 +1,8 @@
-<main style="height: calc(100vh - 155px);">
+<main style="height: 100vh;">
 <div class="container">
-   <div class="card">
+   <div class="card animation slideDownIn">
       <div class="card-body box-shadow">
+         <h1>Edit Feeding</h1>
          <%= form_for([@baby, @entry, @feeding]) do |f| %>
            <div class="modal-body">
              <div class="row">
@@ -19,12 +20,12 @@
                </div>
              </div>
            </div>
-           <div class="modal-footer d-flex justify-space-between">
-             <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
-             <%= f.button "Update Feeding", class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Recording Feeding..."} %>
+           <div class="modal-footer d-flex justify-space-between">             
+             <%= link_to "Back", :back, class: "btn btn-outline-danger" %>
+             <%= f.button "Update Feeding", class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Updating Feeding..."} %>
            </div>
          <% end %>
+         </div>
       </div>
    </div>
-</div>
 </main>

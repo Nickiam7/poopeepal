@@ -1,6 +1,6 @@
 class FeedingsController < ApplicationController
    before_action :authenticate_account!
-   layout "authenticated"
+   layout "authenticated", except: [:edit]
 
    def new
       @baby = Baby.friendly.find(params[:baby_id])
