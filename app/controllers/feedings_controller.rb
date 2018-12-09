@@ -14,10 +14,29 @@ class FeedingsController < ApplicationController
       @feeding = @entry.feedings.new(feeding_params)
       if @feeding.save
          flash[:success] = "New Feeding has been recorded"
+         redirect_to baby_entry_path(@baby, @entry)
       else
          flash[:error] = "Sorry, something went wrong"
       end
-      redirect_to baby_entry_path(@baby, @entry)
+   end
+
+   def edit
+      @baby = Baby.friendly.find(params[:baby_id])
+      @entry = Entry.find(params[:entry_id])
+      @feeding = Feeding.find(params[:id])
+   end
+
+   def update
+      @baby = Baby.friendly.find(params[:baby_id])
+      @entry = Entry.find(params[:entry_id])
+      @feeding = Feeding.find(params[:id])
+      if @feeding.update(feeding_params)
+         flash[:success] = "Feeding data has been updated."
+         redirect_to baby_entry_path(@baby, @entry)
+      else
+         flash[:error] = "Sorry, something went wrong."
+         render :edit
+      end
    end
 
    def destroy

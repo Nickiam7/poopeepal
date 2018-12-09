@@ -34,4 +34,59 @@ document.addEventListener("turbolinks:load", function() {
          $(this).remove();
       });
    },3500);
+
+   let dob = moment($('#baby_dob').val(), 'YYYY-MM-DD hh:mm a').toDate();
+   $('#baby_dob').datetimepicker({
+      format: 'dddd, MMMM D, YYYY',
+      date: dob
+   });
+
+   let startTime = moment($('#feeding_start_time').val(), 'h:mm A').toDate();
+   let endTime = moment($('#feeding_end_time').val(), 'h:mm A').toDate();   
+   $('#feeding_start_time').datetimepicker({
+      format: 'LT',
+      date: startTime
+   });
+   $('#feeding_end_time').datetimepicker({
+      format: 'LT',
+      date: endTime
+   });
+
+   let babySubmit     = document.querySelector('#baby-submit')
+   let babyName       = document.querySelector('#baby_name')
+   let babyNameHelper = document.querySelector('#nameHelpBlock')
+   let babydob        = document.querySelector('#baby_dob')
+   let babydobIcon    = document.querySelector('.fa-calendar')
+   let babydobHelper  = document.querySelector('#dobHelpBlock')
+
+   if(babySubmit) {
+      babySubmit.addEventListener('click', (event) => {         
+         if(babyName.value === '') {
+            event.preventDefault()
+            babyName.classList.add('baby-error')
+            babyNameHelper.classList.remove('text-muted')
+            babyNameHelper.classList.add('text-danger')            
+         }
+         if(babydob.value === '') {
+            event.preventDefault()
+            babydob.classList.add('baby-error')
+            babydobHelper.classList.remove('text-muted')
+            babydobHelper.classList.add('text-danger')
+            babydobIcon.classList.add('text-danger')
+         }
+      })
+      babyName.addEventListener('focus', () => {
+         if(babyName.classList.contains('baby-error')) {
+            babyName.classList.remove('baby-error')
+            babyNameHelper.classList.remove('text-danger')
+         }
+      })
+      babydob.addEventListener('focus', () => {
+         if(babydob.classList.contains('baby-error')) {
+            babydob.classList.remove('baby-error')
+            babydobHelper.classList.remove('text-danger')
+            babydobIcon.classList.remove('text-danger')
+         }
+      }) 
+   }
 });

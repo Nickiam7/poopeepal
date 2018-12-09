@@ -1,0 +1,30 @@
+<main style="height: calc(100vh - 155px);">
+<div class="container">
+   <div class="card">
+      <div class="card-body box-shadow">
+         <%= form_for([@baby, @entry, @feeding]) do |f| %>
+           <div class="modal-body">
+             <div class="row">
+               <div class="col-md-4">
+                 <%= f.label :start_time %>
+                 <%= f.text_field :start_time, class: "form-control datetimepicker-input", data: {toggle: "datetimepicker", target: "#feeding_start_time"}, autocomplete: "off" %>
+               </div>
+               <div class="col-md-4">
+                 <%= f.label :end_time %>
+                 <%= f.text_field :end_time, class: "form-control datetimepicker-input", data: {toggle: "datetimepicker", target: "#feeding_end_time"}, autocomplete: "off" %>
+               </div>
+               <div class="col-md-4">
+                 <%= f.label :amount, "Amount (oz)" %>
+                 <%= f.text_field :amount, class: "form-control"%>
+               </div>
+             </div>
+           </div>
+           <div class="modal-footer d-flex justify-space-between">
+             <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+             <%= f.button "Update Feeding", class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Recording Feeding..."} %>
+           </div>
+         <% end %>
+      </div>
+   </div>
+</div>
+</main>

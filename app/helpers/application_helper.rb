@@ -26,6 +26,8 @@ module ApplicationHelper
          "Edit #{@baby.name}'s Dashboard"
       elsif current_page?(baby_entry_path(@baby, @entry))
          "#{@entry.created_at.strftime("%A, %b %d, %Y")}"
+      elsif current_page?(edit_baby_entry_feeding_path(@baby, @entry, @feeding))
+         "Edit Baby Feeding"
       elsif current_page?(new_baby_entry_feeding_path(@baby, @entry))
          "Tracking New Feeding"
       else
