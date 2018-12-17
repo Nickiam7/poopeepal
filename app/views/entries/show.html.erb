@@ -98,7 +98,7 @@
                   <% else %>
                      <div class="text-center p-3">
                         <h2>You haven't tracked any feeding data yet.</h2>
-                        <%= link_to "#", data: {toggle: "modal", target: "#feedingModal", remot: edit_baby_entry_feeding_path(@baby, @entry, feeding + "#edit-fields")}, class: "btn btn-primary" do %>
+                        <%= link_to "#", data: {toggle: "modal", target: "#feedingModal"}, class: "btn btn-primary" do %>
                           <%= fa_icon("plus") %>
                           <span class="d-none d-lg-inline-block">Track Feeding</span>
                         <% end %>
