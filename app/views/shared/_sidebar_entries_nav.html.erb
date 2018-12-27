@@ -6,7 +6,7 @@
   <%= fa_icon("home") %> 
   <span class="d-none d-lg-inline-block">Home</span>
 <% end %>
-<%= link_to root_path, class: "nav-link" do %>
+<%= link_to "#", data: {toggle: "modal", target: "#feedingModal"}, class: "nav-link" do %>
   <%= fa_icon("cutlery") %>
   <span class="d-none d-lg-inline-block">Track Feeding</span>
 <% end %>

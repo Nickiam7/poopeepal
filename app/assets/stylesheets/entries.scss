@@ -1,0 +1,68 @@
+.tracking-overview {
+   border: 1px solid $gray-200;
+   margin-bottom: 2rem; 
+   &__heading {
+      display: flex;
+      justify-content: space-between;
+      background: #fdfdfd;
+      padding: 0.5rem;
+      border-bottom: 1px solid $gray-200;
+      h2 {
+         margin-bottom: 0;
+         font-size: 1rem;         
+         font-weight: 700;
+      }
+   }
+   &__details {
+      margin-bottom: 0;
+      font-size: 12px;
+      cursor: pointer;
+      &:hover {
+         text-decoration: underline;
+      }
+   }
+   &__count {
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 3rem;
+      h3, p {
+         display: inline;  
+      }
+      h3 {
+         font-size: 3rem;
+      }
+      p {
+         font-size: 1.5rem;
+      }
+   }
+}
+.tracking-changes {
+   display: flex;
+   padding: 0;
+   &__total {
+      width: 75%;
+      padding: 24px;
+   }
+   &__poo-pee {
+      display: flex;
+      flex-direction: column;
+      width: 25%;
+      border-left: 1px solid $gray-200;
+      font-size: 18px;
+      font-weight: 700;
+      .pee, .poo {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex: 1;
+         padding: 0 10px;
+      }
+      .pee {
+         border-bottom: 1px solid $gray-200;
+      }
+   }
+}
+.feedings .dropdown-menu.dropdown-menu-right {
+   top: 35px !important;
+   left: -133px !important;
+}

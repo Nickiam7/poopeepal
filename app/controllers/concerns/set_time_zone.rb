@@ -8,6 +8,6 @@ module SetTimeZone
    private
 
    def set_time_zone(&block)
-     Time.use_zone(current_account.time_zone, &block)
+      Time.use_zone(current_account.time_zone, &block)
    end
 end

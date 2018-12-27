@@ -6,11 +6,13 @@ Rails.application.routes.draw do
    
    get "/babies/start/", to: "babies#start"
    resources :babies do 
-      resources :entries
+      resources :entries do
+         resources :feedings, only: [:create, :edit, :update, :destroy]
+      end
    end
    get "/babies/", to: redirect("/")
 
-   get "/dashboard/", to: "accounts#dashboard"
+   # get "/dashboard/", to: "accounts#dashboard"
    
    authenticated :account do 
       root to: "accounts#dashboard"

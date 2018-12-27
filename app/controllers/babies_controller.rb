@@ -3,14 +3,14 @@ class BabiesController < ApplicationController
    before_action :set_account
    before_action :check_for_allowed_accounts, only: [:show, :edit, :destroy]
    layout "authenticated", except: [:start]
-
+   
    def new      
       @baby = Baby.new
    end
 
    def show      
       @baby = Baby.friendly.find(params[:id])
-      @entries = @baby.entries.order(created_at: :desc).group_by {|entry| entry.created_at.beginning_of_month}
+      @entries = @baby.entries.includes(:feedings).order(created_at: :desc).group_by {|entry| entry.created_at.beginning_of_month}
       @entry = Entry.new
    end
 
