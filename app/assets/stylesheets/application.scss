@@ -13,6 +13,17 @@ header {
       height: 100vh;
    }
 }
+.heading-fancy {
+   &:after {
+      content:"";
+      display:block;
+      position:absolute;
+      bottom: 0;
+      width:5%;
+      height:3px;
+      background-color: $success;
+   }
+}
 .wrapper {
    background: $gradient;
    padding-bottom: 50px;

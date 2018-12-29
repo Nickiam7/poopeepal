@@ -4,13 +4,13 @@ Rails.application.routes.draw do
                controllers: { registrations: "registrations" }, 
                path_names: {sign_in: "login", sign_out: "logout", sign_up: "register"}
    
-   get "/babies/start/", to: "babies#start"
+   get "/babies/start", to: "babies#start"
    resources :babies do 
       resources :entries do
          resources :feedings, only: [:create, :edit, :update, :destroy]
       end
    end
-   get "/babies/", to: redirect("/")
+   get "/babies", to: redirect("/")
 
    # get "/dashboard/", to: "accounts#dashboard"
    
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       root to: "accounts#dashboard"
    end 
    
+   get "/about", to: "pages#about"
    get "/accounts", to: redirect("/")
    root to: "pages#home"
 end
