@@ -11,14 +11,15 @@ Rails.application.routes.draw do
       end
    end
    get "/babies", to: redirect("/")
-
-   # get "/dashboard/", to: "accounts#dashboard"
    
    authenticated :account do 
       root to: "accounts#dashboard"
    end 
+   get "/accounts", to: redirect("/")
    
    get "/about", to: "pages#about"
-   get "/accounts", to: redirect("/")
+   get "/privacy", to: "pages#privacy"
+   get "/terms-of-use", to: "pages#terms", as: "terms"
+
    root to: "pages#home"
 end

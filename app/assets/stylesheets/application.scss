@@ -4,14 +4,11 @@
 @import "navbar";
 @import "babies";
 @import "entries";
+@import "footer";
 @import "font-awesome";
 @import "bootstrap_overides";
-
-header {
-   height: auto;
-   @media(min-width: 768px) {
-      height: 100vh;
-   }
+.vh-100 {
+   height: calc(100vh - 115px);
 }
 .heading-fancy {
    &:after {
@@ -26,7 +23,6 @@ header {
 }
 .wrapper {
    background: $gradient;
-   padding-bottom: 50px;
 }
 .flash-alert {
    position: absolute;

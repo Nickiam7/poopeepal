@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PooPeePal</title>
+    <title>PooPeePal | Secure and Free Baby App for Tracking Poos, Pees, Feedings, Sleep Schedule and More.</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
@@ -17,6 +17,7 @@
     <div class="wrapper">
       <%= render partial: "shared/main_nav" unless current_page?(new_account_session_path) %>
       <%= yield %>
+      <%= render partial: "shared/footer" %>
     </div>
   </body>
 </html>
