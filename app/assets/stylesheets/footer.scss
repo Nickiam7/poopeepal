@@ -1,0 +1,36 @@
+.footer {
+   padding: {
+      top: 2rem;
+      bottom: 2rem;
+   }
+   border-top: 2px solid $gray-100;
+   background: #ffffff; 
+   p {
+      font-size: 14px;
+   }
+   &__legal {
+      text-align: left;
+      ul {
+         list-style: none;
+         font-size: 14px;
+         padding-left: 0;
+         li {
+            display: inline;
+            a {
+               color: $body-color;
+               text-decoration: underline;
+               &:hover {
+                  text-decoration: none;
+               }
+            }
+            &:not(:last-child) {
+               padding-right: 5px;
+               border-right: 1px solid $gray-200;
+            }
+         }
+      }
+      @include media-breakpoint-up(md) {
+         text-align: right;
+      }
+   }
+}

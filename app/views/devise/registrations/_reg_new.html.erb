@@ -33,9 +33,6 @@
 
   <div class="form-group">
     <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em class="small">(Password must be at least <%= @minimum_password_length %> characters)</em>
-    <% end %>
     <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
   </div>
 

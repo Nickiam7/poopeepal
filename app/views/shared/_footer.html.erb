@@ -1,0 +1,15 @@
+<footer class="footer">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6">
+            <p>&copy; Copyright <strong>PooPeePal.com</strong> <%= Time.now.strftime('%Y') %></p>
+         </div>
+         <div class="col-md-6 footer__legal">
+            <ul>
+               <li><%= link_to "Terms of use", terms_path %></li>
+               <li><%= link_to "Privacy", privacy_path %></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</footer>
