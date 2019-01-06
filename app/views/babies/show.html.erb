@@ -77,16 +77,40 @@
                         </dl>
                         <dl class="row">
                            <dt class="col-sm-6 col-md-12 col-xl-5">Gender:</dt>
-                           <dd class="col-sm-6 col-md-12 col-xl-7"><%= @baby.gender %></dd>
+                           <dd class="col-sm-6 col-md-12 col-xl-7">
+                              <% if @baby.gender.present? %>
+                                 <%= @baby.gender %>
+                              <% else %>
+                                 <%= link_to edit_baby_path(@baby), class: "small" do %>
+                                    <%= fa_icon("plus") %>  Add Gender
+                                 <% end %>
+                              <% end %>                                 
+                           </dd>
                         </dl>
                         <dl class="row">
                            <dt class="col-sm-6 col-md-12 col-xl-5">Weight:</dt>
 
-                           <dd class="col-sm-6 col-md-12 col-xl-7"><%= baby_weight %></dd>
+                           <dd class="col-sm-6 col-md-12 col-xl-7">
+                              <% if @baby.weight.present? %>
+                                 <%= baby_weight %>                                                                  
+                              <% else %>
+                                 <%= link_to edit_baby_path(@baby), class: "small" do %>
+                                    <%= fa_icon("plus") %>  Add Weight
+                                 <% end %>
+                              <% end %>
+                           </dd>
                         </dl>
                         <dl class="row">
                            <dt class="col-sm-6 col-md-12 col-xl-5">Height</dt>
-                           <dd class="col-sm-6 col-md-12 col-xl-7"><%= @baby.height %> inches</dd>
+                           <dd class="col-sm-6 col-md-12 col-xl-7">
+                              <% if @baby.height.present? %>
+                                 <%= @baby.height %> inches                                                     
+                              <% else %>
+                                 <%= link_to edit_baby_path(@baby), class: "small" do %>
+                                    <%= fa_icon("plus") %>  Add Height
+                                 <% end %>
+                              <% end %>                                 
+                           </dd>
                         </dl>
                      </div>
                      <div class="sidebar__section sidebar__section--collabs">

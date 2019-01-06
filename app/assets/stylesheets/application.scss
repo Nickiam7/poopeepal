@@ -1,12 +1,14 @@
 @import "variables";
 @import "bootstrap";
 @import "tempusdominus-bootstrap-4";
-@import "navbar";
 @import "babies";
 @import "entries";
 @import "footer";
+@import "js-offcanvas";
 @import "font-awesome";
+@import "navbar";
 @import "bootstrap_overides";
+
 .vh-100 {
    height: calc(100vh - 115px);
 }
@@ -84,6 +86,13 @@
       &:hover {
          background: #395468;
          color: $gray-300;
+      }
+   }
+   .sidebar__action {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      .btn {
+         width: 100%;
       }
    }
 }
