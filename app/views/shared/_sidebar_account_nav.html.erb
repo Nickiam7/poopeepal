@@ -1,21 +1,22 @@
-<%= link_to new_baby_path, class: "btn btn-primary mx-auto my-3 d-block w-75" do %>
+<div class="sidebar__action">
+<%= link_to new_baby_path, class: "btn btn-primary mx-auto my-3 d-block" do %>
   <%= fa_icon("plus") %> 
-  <span class="d-none d-lg-inline-block">New Dashboard</span>
+  <span class="d-md-none d-xl-inline-block">New </span> <span class="d-md-none d-lg-inline-block">Dashboard</span>
 <% end %>
-
+</div>
 <%= link_to root_path, class: "nav-link" do %>
   <%= fa_icon("home") %> 
-  <span class="d-none d-lg-inline-block">Home</span>
+  <span class="d-md-none d-lg-inline-block">Home</span>
 <% end %>
 <%= link_to root_path, class: "nav-link" do %>
   <%= fa_icon("bar-chart") %>
-  <span class="d-none d-lg-inline-block">Baby Dashboard</span>
+  <span class="d-md-none d-lg-inline-block">Baby Dashboard</span>
 <% end %>
 <%= link_to root_path, class: "nav-link" do %>
   <%= fa_icon("pencil-square-o") %>
-  <span class="d-none d-lg-inline-block">Notes</span>
+  <span class="d-md-none d-lg-inline-block">Notes</span>
 <% end %>
 <%= link_to root_path, class: "nav-link" do %>
   <%= fa_icon("list-ol") %>
-  <span class="d-none d-lg-inline-block">To-do's</span>
+  <span class="d-md-none d-lg-inline-block">To-do's</span>
 <% end %>
