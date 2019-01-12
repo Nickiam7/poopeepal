@@ -58,14 +58,15 @@
                <div class="feedings d-block">                  
                   <h2 class="text-success"><%= fa_icon("cutlery", class: "cutlery animation") %> Feedings</h2>                  
                   <% if @feedings.any? %>
-                  <table class="table table-striped">
+                  <table class="table table-striped--mod">
                      <thead>
                         <tr>
-                           <th>Start Time</th>
-                           <th>End Time</th>
-                           <th>Duration</th>
-                           <th>Amount</th>
-                           <th class="text-center">Actions</th>
+                           <th class="sticky-header feeding-col-width">Start Time</th>
+                           <th class="sticky-header feeding-col-width">End Time</th>
+                           <th class="sticky-header feeding-col-width">Duration</th>
+                           <th class="sticky-header feeding-col-width">Amount</th>
+                           <th class="text-center sticky-header feeding-col-width">Notes</th>
+                           <th class="text-center sticky-header feeding-col-width">Actions</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -75,6 +76,9 @@
                               <td><%= feeding.end_time.strftime(" %l:%M %p") %></td>
                               <td><%= ((feeding.end_time - feeding.start_time) / 1.minute).round %> Minutes</td>
                               <td><%= feeding.amount %> oz</td>
+                              <td class="text-center">
+                                 <button class="btn btn-sm btn-light <%= "text-success" if feeding.feeding_notes.present? %>" data-toggle="collapse" href="#collapseExample-<%= feeding.id %>" role="button" aria-expanded="false" aria-controls="collapseExample-<%= feeding.id %>">Notes <%= fa_icon(feeding.feeding_notes.present? ? "chevron-down" : "close", class: ("text-success" if feeding.feeding_notes.present?)) %></button>
+                              </td>
                               <td class="text-center">
                                  <div class="btn-group">
                                     <button type="button" class="btn btn-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -92,6 +96,15 @@
                                  </div>
                               </td>
                            </tr>
+                           <tr>
+                              <td colspan="6" class="p-0 border-0">
+                                 <div class="collapse" id="collapseExample-<%= feeding.id %>">
+                                    <div class="card card-body border-top">
+                                       <%= feeding.feeding_notes.present? ? feeding.feeding_notes : "No notes were recorded for this feeding." %>
+                                    </div>
+                                 </div>
+                              </td>
+                           </tr>                           
                         <% end %>
                      </tbody>  
                   </table>
