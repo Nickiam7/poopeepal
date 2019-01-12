@@ -2,7 +2,7 @@
   <div class="container">
     <% if current_page?(babies_start_path) %>
       <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag("ppp-logo.svg", class: "d-inline-block align-top", width: 30) %>
+        <%= image_tag("ppp-logo.svg", class: "d-inline-block align-top", width: 30, alt: "PooPeePal.com") %>
       <% end %>
     <% end %>
     <%= link_to "#", class: "navbar-brand" do %>
@@ -49,7 +49,7 @@
 <div class="c-offcanvas is-hidden" id="left" role="complementary">
   <div class="navbar flex-column">
       <%= link_to root_path, class: "navbar-brand mx-auto" do %>
-        <%= image_tag("ppp-logo.svg", class: "d-block align-top mx-auto", width: 60) %>
+        <%= image_tag("ppp-logo.svg", class: "d-block align-top mx-auto", width: 60, alt:"PooPeePal.com") %>
         PooPeePal
       <% end %>
       <div class="offcanvas-nav d-block d-md-none" data-set="bs">

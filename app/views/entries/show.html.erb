@@ -20,7 +20,7 @@
                <div class="tracking">
                   <div class="tracking-overview">
                      <div class="tracking-overview__heading">
-                        <h2><%= image_tag("diaper--dark.svg", width: 18) %> Diapers</h2>
+                        <h2><%= image_tag("diaper--dark.svg", width: 18, alt: "Diaper Overview") %> Diapers</h2>
                         <p class="tracking-overview__details changes-details">View Details<%= fa_icon("chevron-down", class: "ml-1") %></p>
                      </div>
                      <div class="tracking-overview__count tracking-changes">
@@ -29,10 +29,10 @@
                         </div>
                         <div class="tracking-changes__poo-pee">
                            <div class="pee">
-                              8 <%= image_tag("pee-drop.svg", class: "d-inline-block ml-2", style: "max-width: 20px;", width: "100%", data: {toggle: "tooltip", placement: "right", html: "true", title: "#{@feedings.count} diapers contained <u><strong>pee</strong></u>" }) %>
+                              8 <%= image_tag("pee-drop.svg", class: "d-inline-block ml-2", style: "max-width: 20px;", width: "100%", data: {toggle: "tooltip", placement: "right", html: "true", title: "#{@feedings.count} diapers contained <u><strong>pee</strong></u>" }, alt: "Pee Icon") %>
                            </div>
                            <div class="poo">
-                              4 <%= image_tag("ppp-logo.svg", class: "d-inline-block ml-2", style: "max-width: 24px;", width: "100%", data: {toggle: "tooltip", placement: "right", html: "true" ,title: "#{@feedings.count} diapers contained <u><strong>poo</strong></u> " }) %>
+                              4 <%= image_tag("ppp-logo.svg", class: "d-inline-block ml-2", style: "max-width: 24px;", width: "100%", data: {toggle: "tooltip", placement: "right", html: "true" ,title: "#{@feedings.count} diapers contained <u><strong>poo</strong></u> " }, alt: "Poo Icon") %>
                            </div>
                         </div>
                      </div>
@@ -82,7 +82,7 @@
                               <td class="text-center">
                                  <div class="btn-group">
                                     <button type="button" class="btn btn-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                       <%= fa_icon("ellipsis-v") %>
+                                       <%= fa_icon("ellipsis-v") %><p class="sr-only">Edit or delete feeding</p>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right animation slideDownIn">
                                        <%= link_to edit_baby_entry_feeding_path(@baby, @entry, feeding), class: "dropdown-item" do %>
@@ -120,7 +120,7 @@
                   <% end %>
                </div>
                <div class="changes d-none">
-                  <h2><%= image_tag("diaper--dark.svg", width: 36, class: "diaper animation") %> Diapers</h2>
+                  <h2><%= image_tag("diaper--dark.svg", width: 36, class: "diaper animation", alt: "Diaper Heading") %> Diapers</h2>
                   <table class="table table-striped">
                      <thead>
                         <tr>
