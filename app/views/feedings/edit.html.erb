@@ -19,6 +19,18 @@
                  <%= f.text_field :amount, class: "form-control"%>
                </div>
              </div>
+             <div class="row">
+               <div class="col mt-3">
+                 <a data-toggle="collapse" href="#feedingNotes" role="button" aria-expanded="false" aria-controls="feedingNotes">
+                     <%= fa_icon("plus") %> Add Note
+                 </a>
+                 <div class="collapse <%= "show" if @feeding.feeding_notes.present? %>" id="feedingNotes">            
+                   <%= f.label :feeding_notes %>
+                   <%= f.text_area :feeding_notes, rows: 8, class: "form-control" %>                
+                 </div>
+
+               </div>
+             </div>
            </div>
            <div class="modal-footer d-flex justify-space-between">             
              <%= link_to "Back", :back, class: "btn btn-outline-danger" %>

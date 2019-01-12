@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+   before_action :authenticate_account!
    layout "authenticated"
 
    def show

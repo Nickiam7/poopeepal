@@ -20,7 +20,17 @@ label {
    border-top-left-radius: $border-radius;
    border-top-right-radius: $border-radius;
 }
-
-.table-striped tbody tr:nth-of-type(odd) {
-   background-color: $gray-100;
+.feedings {
+   .table th, .table td {
+      vertical-align: middle;
+   }
+   .sticky-header {
+      background: $gray-100;
+      top: 56px;
+      z-index: 1;
+      position: sticky;
+   }
+   .feeding-col-width {
+      width: 16.66%;
+   }
 }

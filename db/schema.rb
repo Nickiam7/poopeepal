@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_30_231921) do
+ActiveRecord::Schema.define(version: 2019_01_12_125143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_231921) do
     t.bigint "entry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "feeding_notes"
     t.index ["entry_id"], name: "index_feedings_on_entry_id"
   end
 

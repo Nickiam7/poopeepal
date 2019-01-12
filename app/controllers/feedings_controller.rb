@@ -54,6 +54,6 @@ class FeedingsController < ApplicationController
    private
 
    def feeding_params
-      params.require(:feeding).permit(:start_time, :end_time, :amount)
+      params.require(:feeding).permit(:start_time, :end_time, :amount, :feeding_notes)
    end
 end
