@@ -12,7 +12,7 @@
   <%= fa_icon("cutlery") %>
   <span class="d-md-none d-lg-inline-block">Track Feeding</span>
 <% end %>
-<%= link_to root_path, class: "nav-link" do %>
+<%= link_to "#", data: {toggle: "modal", target: "#diaperModal"}, class: "nav-link" do %>
   <%= image_tag("diaper.svg", width: 16, alt: "Diaper Icon") %>
   <span class="d-md-none d-lg-inline-block">Track Diaper</span>
 <% end %>

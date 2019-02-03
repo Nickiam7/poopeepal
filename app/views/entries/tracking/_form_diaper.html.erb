@@ -1,0 +1,66 @@
+<div class="modal fade" id="diaperModal" tabindex="-1" role="dialog" aria-labelledby="diaperModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="diaperModalLabel">Track Diaper</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_for([@baby, @entry, @diaper]) do |f| %>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :time %>
+              <%= f.text_field :time, class: "form-control datetimepicker-input", data: {toggle: "datetimepicker", target: "#diaper_time"}, autocomplete: "off" %>
+            </div>
+            <div class="col-md-6">
+              <%= f.label "What was in #{@baby.name}'s diaper?", class: "label"  %><br>
+              <input type="checkbox" id="checkPee" />
+              <label for="checkPee" data-toggle="tooltip" data-placement="top" title="Pee"><%= image_tag("pee-drop.svg", class: "d-inline-block align-middle", width: 25, alt: "Poo") %></label>
+
+              <input type="checkbox" id="checkPoo" />
+              <label for="checkPoo" data-toggle="tooltip" data-placement="top" title="Poo"><%= image_tag("ppp-logo.svg", class: "d-inline-block align-middle", width: 40, alt: "Poo") %></label>
+
+            </div>
+          </div>
+          <div class="row d-none" id="poo">
+            <div class="col-md-12">
+              <%= f.label :size %><br>
+              <div class="btn-group border btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-light" data-toggle="tooltip" data-placement="top" title="Small">
+                  <%= f.radio_button :size, "small" %>
+                  <%= image_tag("ppp-logo.svg", class: "d-inline-block align-middle", width: 10, alt: "Small") %>
+                </label>
+                <label class="btn btn-light border-left"  data-toggle="tooltip" data-placement="top" title="Regular">
+                  <%= f.radio_button :size, "medium" %>
+                  <%= image_tag("ppp-logo.svg", class: "d-inline-block align-middle", width: 20, alt: "Medium") %>
+                </label>
+                <label class="btn btn-light border-left"  data-toggle="tooltip" data-placement="top" title="Big ol' Turd">
+                  <%= f.radio_button :size, "large" %>
+                  <%= image_tag("ppp-logo.svg", class: "d-inline-block align-middle", width: 30, alt: "Large") %>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mt-3">
+              <a data-toggle="collapse" href="#diaperNote" role="button" aria-expanded="false" aria-controls="diaperNote">
+                  <%= fa_icon("plus") %> Add Note
+              </a>
+              <div class="collapse" id="diaperNote">            
+                <%= f.label :note %>
+                <%= f.text_area :note, rows: 8, class: "form-control" %>                
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-space-between">
+          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+          <%= f.button "Track Diaper", class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Tracking Diaper..."} %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,8 @@ class EntriesController < ApplicationController
       @entry = Entry.find(params[:id])
       @feeding = Feeding.new
       @feedings = @entry.feedings.all
+      @diaper = Diaper.new
+      @diapers = @entry.diapers.all
    end
 
    def create

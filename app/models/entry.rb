@@ -1,5 +1,6 @@
 class Entry < ApplicationRecord
-   has_many :feedings
+   has_many :feedings, dependent: :destroy
+   has_many :diapers, dependent: :destroy
 
    belongs_to :account
    belongs_to :baby

@@ -9,9 +9,10 @@ class Baby < ApplicationRecord
       ]
    end
 
-   belongs_to :account
    has_many :entries, dependent: :destroy
    has_many :feedings, through: :entries
 
+   belongs_to :account
+   
    validates :name, :dob, presence: true
 end

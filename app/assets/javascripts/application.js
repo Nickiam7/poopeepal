@@ -18,6 +18,8 @@
 //= require tempusdominus-bootstrap-4.js
 //= require activestorage
 //= require js-offcanvas.pkgd
+//= require feeding.js
+//= require diapers.js
 //= require turbolinks
 //= require_tree .
 
@@ -51,6 +53,12 @@ document.addEventListener("turbolinks:load", function() {
    $('#feeding_end_time').datetimepicker({
       format: 'LT',
       date: endTime
+   });
+
+   let diaperTime = moment($('#diaper_time').val(), 'h:mm A').toDate();
+   $('#diaper_time').datetimepicker({
+      format: 'LT',
+      date: diaperTime
    });
 
    let babySubmit     = document.querySelector('#baby-submit')

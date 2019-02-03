@@ -112,7 +112,7 @@
                   <% else %>
                      <div class="text-center p-3">
                         <h2>You haven't tracked any feeding data yet.</h2>
-                        <%= link_to "#", data: {toggle: "modal", target: "#feedingModal"}, class: "btn btn-primary" do %>
+                        <%= link_to "#", data: {toggle: "modal", target: "#feedingModal"}, class: "btn btn-primary mt-3" do %>
                           <%= fa_icon("plus") %>
                           <span class="d-none d-lg-inline-block">Track Feeding</span>
                         <% end %>
@@ -172,6 +172,7 @@
 </div>
 </main>
 <%= render partial: "entries/tracking/form_feeding" %>
+<%= render partial: "entries/tracking/form_diaper" %>
 <script>
 $(document).on('turbolinks:load', function() {
    $('.feeding-details').on('click', function() {          

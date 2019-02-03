@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_12_125143) do
+ActiveRecord::Schema.define(version: 2019_01_13_135717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(version: 2019_01_12_125143) do
     t.index ["slug"], name: "index_babies_on_slug", unique: true
   end
 
+  create_table "diapers", force: :cascade do |t|
+    t.time "time"
+    t.string "size"
+    t.string "color"
+    t.text "note"
+    t.bigint "entry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entry_id"], name: "index_diapers_on_entry_id"
+  end
+
   create_table "entries", force: :cascade do |t|
     t.bigint "account_id"
     t.bigint "baby_id"
@@ -83,6 +94,7 @@ ActiveRecord::Schema.define(version: 2019_01_12_125143) do
   end
 
   add_foreign_key "babies", "accounts"
+  add_foreign_key "diapers", "entries"
   add_foreign_key "entries", "accounts"
   add_foreign_key "entries", "babies"
   add_foreign_key "feedings", "entries"
