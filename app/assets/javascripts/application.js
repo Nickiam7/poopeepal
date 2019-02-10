@@ -140,9 +140,16 @@ document.addEventListener("turbolinks:load", function() {
          modifiers: "left,overlay",
          triggerButton: '.js-offcanvas-toggler',
          onInit :  function() {
-            $(this).removeClass('is-hidden');
+            $(this).removeClass('is-hidden');            
          }
       } );
+
+      const dataOffcanvas = $('#left').data('offcanvas-component');
+      $('.offcanvas-nav').find('.nav-link').on('click', function() {
+         dataOffcanvas.close();
+         $('.c-offcanvas-bg').remove();
+      });
+
       $( ".js-append-around" ).appendAround();
    });
 });

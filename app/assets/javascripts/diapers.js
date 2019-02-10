@@ -10,9 +10,10 @@ document.addEventListener("turbolinks:load", function() {
          }
       })
    }
-
+   
    $('#diaperModal').on('hidden.bs.modal', function() {
-      $(this).find('#new_diaper')[0].reset();
       pooOptions.classList.add('d-none')
+      $('.collapse').removeClass('show');
+      $(this).find('#new_diaper')[0].reset();
    });
 })
