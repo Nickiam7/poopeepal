@@ -11,36 +11,110 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-md-6">
-              <%= f.label :time %>
+              <div class="d-flex justify-content-between">
+                <%= f.label :time %>
+                <%= f.label "Close", class: "time-done d-none" %>
+              </div>              
               <%= f.text_field :time, class: "form-control datetimepicker-input", data: {toggle: "datetimepicker", target: "#diaper_time"}, autocomplete: "off" %>
             </div>
             <div class="col-md-6">
-              <%= f.label "What was in #{@baby.name}'s diaper?", class: "label"  %><br>
-              <input type="checkbox" id="checkPee" />
+              <%= f.label "What was in #{@baby.name}'s diaper?", class: "label"  %><br>              
+              <%= f.check_box :pee, id: "checkPee" %>
               <label for="checkPee" data-toggle="tooltip" data-placement="top" title="Pee"><%= image_tag("pee-drop.svg", class: "d-inline-block align-middle", width: 25, alt: "Poo") %></label>
-
-              <input type="checkbox" id="checkPoo" />
+              <%= f.check_box :poo, id: "checkPoo" %>              
               <label for="checkPoo" data-toggle="tooltip" data-placement="top" title="Poo"><%= image_tag("ppp-logo.svg", class: "d-inline-block align-middle", width: 40, alt: "Poo") %></label>
-
             </div>
           </div>
-          <div class="row d-none" id="poo">
+          <div class="row d-none mt-4" id="poo">
             <div class="col-md-12">
+              <h2 class="h6 mb-3">Additional Poo Details</h2>
+            </div>
+            <div class="col-md-6">
               <%= f.label :size %><br>
-              <div class="btn-group border btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-light" data-toggle="tooltip" data-placement="top" title="Small">
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-sm btn-light" data-toggle="tooltip" data-placement="top" title="Small">
                   <%= f.radio_button :size, "small" %>
                   <%= image_tag("ppp-logo.svg", class: "d-inline-block align-middle", width: 10, alt: "Small") %>
                 </label>
-                <label class="btn btn-light border-left"  data-toggle="tooltip" data-placement="top" title="Regular">
+                <label class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="top" title="Regular">
                   <%= f.radio_button :size, "medium" %>
                   <%= image_tag("ppp-logo.svg", class: "d-inline-block align-middle", width: 20, alt: "Medium") %>
                 </label>
-                <label class="btn btn-light border-left"  data-toggle="tooltip" data-placement="top" title="Big ol' Turd">
+                <label class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="top" title="Big ol' Turd">
                   <%= f.radio_button :size, "large" %>
                   <%= image_tag("ppp-logo.svg", class: "d-inline-block align-middle", width: 30, alt: "Large") %>
                 </label>
               </div>
+              <%= f.label :texture, class: "mt-3" %><br>
+              <%= f.select(:texture, options_for_select([
+                ["Tar-like (Newborn)", "tar"],
+                ["Loose", "loose"], 
+                ["Firm", "firm"],
+                ["Diarrhea", "diarrhea"],
+                ["Mucus-like", "mucus"],
+                ["Bloody", "bloody"],
+                ["Small Pebble-like", "pebble"],
+                ["Other", "other"],
+                ]), 
+                {prompt: "Select Poo Texture"}, 
+                {class: "custom-select form-control"} ) 
+              %>                                   
+            </div>
+            <div class="col-md-6 color">              
+              <%= f.label :color %><br>
+              <div class="btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-sm btn-light" data-toggle="tooltip" data-placement="top" title="Black">
+                  <%= f.radio_button :color, "black" %>
+                  <%= image_tag("black_poo.svg", class: "d-inline-block align-middle", width: 30, alt: "Black") %>
+                </label>
+                <label class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="top" title="Dark Green">
+                  <%= f.radio_button :color, "dark-green" %>
+                  <%= image_tag("dark-green.svg", class: "d-inline-block align-middle", width: 30, alt: "Dark Green") %>
+                </label>
+                <label class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="top" title="Bright Green">
+                  <%= f.radio_button :color, "bright-green" %>
+                  <%= image_tag("bright-green.svg", class: "d-inline-block align-middle", width: 30, alt: "Bright Green") %>
+                </label>
+              
+                <label class="btn btn-sm btn-light" data-toggle="tooltip" data-placement="top" title="Brown">
+                  <%= f.radio_button :color, "brown" %>
+                  <%= image_tag("ppp-logo.svg", class: "d-inline-block align-middle", width: 30, alt: "Brown") %>
+                </label>
+                <label class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="top" title="Green Tan">
+                  <%= f.radio_button :color, "green-tan" %>
+                  <%= image_tag("green-tan.svg", class: "d-inline-block align-middle", width: 30, alt: "Green Tan") %>
+                </label>
+                <label class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="top" title="Mustard Yellow (Mmmmm...)">
+                  <%= f.radio_button :color, "mustard-yellow" %>
+                  <%= image_tag("mustard_yellow.svg", class: "d-inline-block align-middle", width: 30, alt: "Mustard Yellow") %>
+                </label>
+
+                <label class="btn btn-sm btn-light" data-toggle="tooltip" data-placement="top" title="Red">
+                  <%= f.radio_button :color, "red" %>
+                  <%= image_tag("red.svg", class: "d-inline-block align-middle", width: 30, alt: "Red") %>
+                </label>
+                <label class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="top" title="Orange">
+                  <%= f.radio_button :color, "orange" %>
+                  <%= image_tag("orange.svg", class: "d-inline-block align-middle", width: 30, alt: "Orange") %>
+                </label>
+                <label class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="top" title="Yellow">
+                  <%= f.radio_button :color, "yellow" %>
+                  <%= image_tag("bright_yellow.svg", class: "d-inline-block align-middle", width: 30, alt: "Yellow") %>
+                </label>
+              
+                <label class="btn btn-sm btn-light" data-toggle="tooltip" data-placement="top" title="Gray">
+                  <%= f.radio_button :color, "gray" %>
+                  <%= image_tag("gray.svg", class: "d-inline-block align-middle", width: 30, alt: "Gray") %>
+                </label>
+                <label class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="top" title="White">
+                  <%= f.radio_button :color, "white" %>
+                  <%= image_tag("white.svg", class: "d-inline-block align-middle", width: 30, alt: "White") %>
+                </label>
+                <label class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="top" title="Other">
+                  <%= f.radio_button :color, "other" %>
+                  <%= image_tag("other-poo.svg", class: "d-inline-block align-middle", width: 30, alt: "Other") %>
+                </label>
+              </div>              
             </div>
           </div>
           <div class="row">

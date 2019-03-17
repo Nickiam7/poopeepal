@@ -13,16 +13,21 @@
             <div class="col-md-4">
               <div class="d-flex justify-content-between">
                 <%= f.label :start_time %>
-                <%= f.label "Done", class: "done" %>
+                <%= f.label "Close", class: "start-done d-none" %>
               </div>
               <%= f.text_field :start_time, class: "form-control datetimepicker-input", data: {toggle: "datetimepicker", target: "#feeding_start_time"}, autocomplete: "off" %>
             </div>
             <div class="col-md-4">
-              <%= f.label :end_time %>
+              <div class="d-flex justify-content-between">
+                <%= f.label :end_time %>
+                <%= f.label "Close", class: "end-done d-none" %>
+              </div>              
               <%= f.text_field :end_time, class: "form-control datetimepicker-input", data: {toggle: "datetimepicker", target: "#feeding_end_time"}, autocomplete: "off" %>
             </div>
             <div class="col-md-4">
-              <%= f.label :amount, "Amount (oz)" %>
+              <div class="d-flex justify-content-between">
+                <%= f.label :amount, "Amount (oz)" %>              
+              </div> 
               <%= f.text_field :amount, class: "form-control"%>
             </div>
           </div>

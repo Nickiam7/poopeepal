@@ -1,14 +1,18 @@
 document.addEventListener("turbolinks:load", function() {
    $('#feedingModal').on('hidden.bs.modal', function() {
       $('.collapse').removeClass('show');
-      $(this).find('#new_feeding')[0].reset();
    });
 
-   $('#feeding_start_time').on('change', function() {
-      if($('.done').hasClass('d-none')) {
-         $('.done').removeClass('d-none');
-      } else {
-         $('.done').addClass('d-none');
-      }
+   $('#feeding_start_time').on('focusin', function() {
+      $('.start-done').removeClass('d-none');      
+   });
+   $('#feeding_end_time').on('focusin', function() {
+      $('.end-done').removeClass('d-none');      
+   });
+   $('#feeding_start_time').on('focusout', function() {
+      $('.start-done').addClass('d-none');      
+   });
+   $('#feeding_end_time').on('focusout', function() {
+      $('.end-done').addClass('d-none');      
    });
 })

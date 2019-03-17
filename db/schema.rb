@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_13_135717) do
+ActiveRecord::Schema.define(version: 2019_03_16_192712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(version: 2019_01_13_135717) do
     t.bigint "entry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "pee", default: false, null: false
+    t.boolean "poo", default: false, null: false
+    t.string "texture"
     t.index ["entry_id"], name: "index_diapers_on_entry_id"
   end
 

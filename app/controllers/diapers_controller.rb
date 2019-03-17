@@ -7,7 +7,7 @@ class DiapersController < ApplicationController
       @entry = Entry.find(params[:entry_id])
       @diaper = @entry.diapers.new(diaper_params)
       if @diaper.save
-         flash[:success] = "New Feeding has been recorded"
+         flash[:success] = "Diaper change has been recorded"
       else
          flash[:error] = "Sorry, something went wrong"
       end
@@ -17,6 +17,6 @@ class DiapersController < ApplicationController
    private
 
    def diaper_params
-      params.require(:diaper).permit(:time, :qty, :color, :note)
+      params.require(:diaper).permit(:time, :size, :color, :note, :pee, :poo, :texture)
    end
 end
