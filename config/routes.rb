@@ -8,6 +8,7 @@ Rails.application.routes.draw do
    resources :babies do 
       resources :entries do
          resources :feedings, only: [:create, :edit, :update, :destroy]
+         resources :diapers, only: [:create, :edit, :update, :destroy]
       end
    end
    get "/babies", to: redirect("/")

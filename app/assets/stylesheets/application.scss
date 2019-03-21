@@ -3,6 +3,7 @@
 @import "tempusdominus-bootstrap-4";
 @import "babies";
 @import "entries";
+@import "diapers";
 @import "footer";
 @import "js-offcanvas";
 @import "font-awesome";
@@ -11,6 +12,9 @@
 
 .vh-100 {
    height: calc(100vh - 115px);
+}
+.btn {
+   border-radius: 1px;
 }
 .heading-fancy {
    &:after {

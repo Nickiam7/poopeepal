@@ -1,6 +1,11 @@
 <main>
 <div class="container">
-   <div class="card">
+   <div class="entry-actions text-right">                              
+      <%= link_to baby_entry_path(@baby, @entry), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-light mb-2" do %>
+         <%= fa_icon("trash", class: "text-danger") %> Delete Entry
+      <% end %>                                       
+   </div>
+   <div class="card">      
       <div class="card-body box-shadow">
          <div class="row">
             <div class="col-md-4">
@@ -25,14 +30,14 @@
                      </div>
                      <div class="tracking-overview__count tracking-changes">
                         <div class="tracking-changes__total">
-                           <h3>12</h3>
+                           <h3><%= @diapers.count %></h3>
                         </div>
                         <div class="tracking-changes__poo-pee">
                            <div class="pee">
-                              8 <%= image_tag("pee-drop.svg", class: "d-inline-block ml-2", style: "max-width: 20px;", width: "100%", data: {toggle: "tooltip", placement: "right", html: "true", title: "#{@feedings.count} diapers contained <u><strong>pee</strong></u>" }, alt: "Pee Icon") %>
+                              <%= @entry.diapers.pee_diaper.length %> <%= image_tag("pee-drop.svg", class: "d-inline-block ml-2", style: "max-width: 20px;", width: "100%", data: {toggle: "tooltip", placement: "right", html: "true", title: "#{pluralize(@entry.diapers.pee_diaper.length, "diaper")}  contained <u><strong>pee</strong></u>" }, alt: "Pee Icon") %>
                            </div>
                            <div class="poo">
-                              4 <%= image_tag("ppp-logo.svg", class: "d-inline-block ml-2", style: "max-width: 24px;", width: "100%", data: {toggle: "tooltip", placement: "right", html: "true" ,title: "#{@feedings.count} diapers contained <u><strong>poo</strong></u> " }, alt: "Poo Icon") %>
+                              <%= @entry.diapers.poo_diaper.length %> <%= image_tag("ppp-logo.svg", class: "d-inline-block ml-2", style: "max-width: 24px;", width: "100%", data: {toggle: "tooltip", placement: "right", html: "true" ,title: "#{pluralize(@entry.diapers.poo_diaper.length, "diaper")} contained <u><strong>poo</strong></u> " }, alt: "Poo Icon") %>
                            </div>
                         </div>
                      </div>
@@ -112,7 +117,7 @@
                   <% else %>
                      <div class="text-center p-3">
                         <h2>You haven't tracked any feeding data yet.</h2>
-                        <%= link_to "#", data: {toggle: "modal", target: "#feedingModal"}, class: "btn btn-primary" do %>
+                        <%= link_to "#", data: {toggle: "modal", target: "#feedingModal"}, class: "btn btn-primary mt-3" do %>
                           <%= fa_icon("plus") %>
                           <span class="d-none d-lg-inline-block">Track Feeding</span>
                         <% end %>
@@ -172,6 +177,7 @@
 </div>
 </main>
 <%= render partial: "entries/tracking/form_feeding" %>
+<%= render partial: "entries/tracking/form_diaper" %>
 <script>
 $(document).on('turbolinks:load', function() {
    $('.feeding-details').on('click', function() {          
