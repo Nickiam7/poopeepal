@@ -145,7 +145,7 @@ document.addEventListener("turbolinks:load", function() {
       } );
 
       const dataOffcanvas = $('#left').data('offcanvas-component');
-      $('.offcanvas-nav').find('.nav-link').on('click', function() {
+      $('.offcanvas-nav').find('.nav-link').on('click touchend', function() {
          dataOffcanvas.close();
          $('.c-offcanvas-bg').remove();
       });
