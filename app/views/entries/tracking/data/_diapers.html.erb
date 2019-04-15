@@ -1,0 +1,69 @@
+<div class="changes d-none">
+   <h2><%= image_tag("diaper--dark.svg", width: 36, class: "diaper animation", alt: "Diaper Heading") %> Diapers</h2>
+   <% if @diapers.any? %>
+      <table class="table table-striped--mod">
+         <thead>
+            <tr>
+               <th class="sticky-header feeding-col-width">Time</th>
+               <th class="sticky-header feeding-col-width">Contents</th>
+               <th class="sticky-header feeding-col-width">Size</th>
+               <th class="sticky-header feeding-col-width">Color</th>
+               <th class="sticky-header feeding-col-width">Texture</th>
+               <th class="text-center sticky-header feeding-col-width">Notes</th>
+               <th class="text-center sticky-header feeding-col-width">Actions</th>
+            </tr>
+         </thead>
+         <tbody>
+            <% @diapers.order(created_at: :desc).each do |diaper| %>            
+               <tr>
+                  <td><%= diaper.time.strftime(" %l:%M %p") %></td>
+                  <td>
+                     <%= image_tag("pee-drop.svg", class: "d-inline-block align-middle mr-3", width: 25, alt: "Poo") if diaper.pee %>                     
+                     <%= image_tag("ppp-logo.svg", class: "d-inline-block align-middle", width: 40, alt: "Poo") if diaper.poo %>
+                  </td>
+                  <td><%= image_tag("ppp-logo.svg", class: "d-inline-block align-middle", width: poo_image_size(diaper), alt: "Poo", data: {toggle: "tooltip", placement: "top", title: "#{diaper.size.capitalize}"}) if diaper.size %></td>
+                  <td><%= diaper.color %></td>
+                  <td><%= diaper.texture %></td>
+                  <td class="text-center">
+                     <button class="btn btn-sm btn-light <%= "text-success" if diaper.note.present? %>" data-toggle="collapse" href="#collapseExample-<%= diaper.id %>" role="button" aria-expanded="false" aria-controls="collapseExample-<%= diaper.id %>">Notes <%= fa_icon(diaper.note.present? ? "chevron-down" : "close", class: ("text-success" if diaper.note.present?)) %></button>
+                  </td>
+                  <td class="text-center">
+                     <div class="btn-group">
+                        <button type="button" class="btn btn-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           <%= fa_icon("ellipsis-v") %><p class="sr-only">Edit or delete diaper</p>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right animation slideDownIn">
+                           <%= link_to "", class: "dropdown-item" do %>
+                              <%= fa_icon("edit") %> Edit
+                           <% end %>
+                           <div class="dropdown-divider"></div>
+                           <%= link_to "", method: :delete, class: "dropdown-item" do %>
+                              <%= fa_icon("trash", class: "text-danger") %> Delete
+                           <% end %>                                       
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="7" class="p-0 border-0">
+                     <div class="collapse" id="collapseExample-<%= diaper.id %>">
+                        <div class="card card-body border-top mb-0" style="background: #fdfdfd;">
+                           <h3>Notes:</h3>
+                           <%= diaper.note.present? ? diaper.note : "No notes were recorded for this diaper." %>
+                        </div>
+                     </div>
+                  </td>
+               </tr>                           
+            <% end %>
+         </tbody>  
+      </table>
+   <% else %>
+   <div class="text-center p-3">
+         <h2>You haven't tracked any diapers yet.</h2>
+         <%= link_to "#", data: {toggle: "modal", target: "#diaperModal"}, class: "btn btn-primary mt-3" do %>
+           <%= fa_icon("plus") %>
+           <span class="d-none d-lg-inline-block">Track Diaper</span>
+         <% end %>
+      </div>
+   <% end %>   
+</div>

@@ -143,13 +143,11 @@ document.addEventListener("turbolinks:load", function() {
             $(this).removeClass('is-hidden');            
          }
       } );
-
       const dataOffcanvas = $('#left').data('offcanvas-component');
       $('.offcanvas-nav').find('.nav-link').on('click touchend', function() {
          dataOffcanvas.close();
          $('.c-offcanvas-bg').remove();
       });
-
       $( ".js-append-around" ).appendAround();
    });
 });

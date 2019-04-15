@@ -54,4 +54,14 @@ module ApplicationHelper
       weight = @baby.weight.split(".")
       "#{weight[0]} lbs, #{weight[1]} oz"
    end
+
+   def poo_image_size(diaper)
+      if diaper.size == "large"
+         40
+      elsif diaper.size == "medium"
+         30
+      else
+         20
+      end
+   end
 end

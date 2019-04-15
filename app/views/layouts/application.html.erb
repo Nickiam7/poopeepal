@@ -37,7 +37,7 @@
   <body>
     <%= render partial: "shared/flash" %>
     <div class="wrapper">
-      <%= render partial: "shared/main_nav" unless current_page?(new_account_session_path) %>
+      <%= render partial: "shared/main_nav" %>
       <%= yield %>
       <%= render partial: "shared/footer" %>
     </div>
