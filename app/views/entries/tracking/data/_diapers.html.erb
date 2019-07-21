@@ -21,9 +21,9 @@
                      <%= image_tag("pee-drop.svg", class: "d-inline-block align-middle mr-3", width: 25, alt: "Poo") if diaper.pee %>                     
                      <%= image_tag("ppp-logo.svg", class: "d-inline-block align-middle", width: 40, alt: "Poo") if diaper.poo %>
                   </td>
-                  <td><%= image_tag("ppp-logo.svg", class: "d-inline-block align-middle", width: poo_image_size(diaper), alt: "Poo", data: {toggle: "tooltip", placement: "top", title: "#{diaper.size.capitalize}"}) if diaper.size %></td>
-                  <td><%= diaper.color %></td>
-                  <td><%= diaper.texture %></td>
+                  <td><%= image_tag("ppp-logo.svg", class: "d-inline-block align-middle", width: poo_image_size(diaper.size), alt: "Poo", data: {toggle: "tooltip", placement: "top", title: "#{diaper.size.capitalize}"}) if diaper.size %></td>
+                  <td><%= poo_image_color(diaper.color) %></td>
+                  <td><strong><%= diaper.texture.capitalize %></strong></td>
                   <td class="text-center">
                      <button class="btn btn-sm btn-light <%= "text-success" if diaper.note.present? %>" data-toggle="collapse" href="#collapseExample-<%= diaper.id %>" role="button" aria-expanded="false" aria-controls="collapseExample-<%= diaper.id %>">Notes <%= fa_icon(diaper.note.present? ? "chevron-down" : "close", class: ("text-success" if diaper.note.present?)) %></button>
                   </td>
