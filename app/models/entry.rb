@@ -5,7 +5,11 @@ class Entry < ApplicationRecord
    belongs_to :account
    belongs_to :baby
 
-   def sum_amount
+   def sum_feedings
       self.feedings.sum(&:amount)
+   end
+
+   def sum_diapers
+      self.diapers.size
    end
 end
