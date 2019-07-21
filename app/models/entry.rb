@@ -8,8 +8,4 @@ class Entry < ApplicationRecord
    def sum_feedings
       self.feedings.sum(&:amount)
    end
-
-   def sum_diapers
-      self.diapers.size
-   end
 end
