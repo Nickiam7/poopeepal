@@ -4,11 +4,32 @@
       <div class="col">
          <div class="card">
             <div class="card-body box-shadow">
-               <h1><%= @account.username %></h1>
-               <% @babies.each do |baby| %>
-                  <%= link_to baby.name, baby_path(baby) %>
-               <% end %>
-               <%= link_to "Create New Baby Dashboard", new_baby_path %> <br>            
+               <h1><%= @account.sign_in_count > 1 ? "Welcome back " : "Welcome " %><%= @account.first_name %></h1>
+               
+                  <div class="row">
+                     <div class="col-md-8">
+                        <div class="container">
+                        <div class="row">
+                           <% @babies.each do |baby| %>
+                              <div class="col-md-6">
+                                 <div class="card border">
+                                    <%= link_to image_tag(baby.baby_thumb.url, class: "card-img-top", style: "max-height: 150px;"), baby_path(baby)  %>
+                                    <div class="card-body">
+                                       <p class="card-title"><%= link_to baby.name, baby_path(baby) %></p>
+                                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           <% end %>
+                        </div>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <h2>Notes</h2>
+                     </div>
+                  </div>
+               
+               <br> <%= link_to "Create New Baby Dashboard", new_baby_path, class: "btn btn-primary" %> <br>           
             </div>
          </div>
    </div>

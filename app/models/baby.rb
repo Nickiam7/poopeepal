@@ -14,5 +14,7 @@ class Baby < ApplicationRecord
 
    belongs_to :account
    
+   mount_uploader :baby_thumb, BabyUploader
+
    validates :name, :dob, presence: true
 end

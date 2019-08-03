@@ -10,54 +10,67 @@
          </ul>
       </div>
    <% end %>
-   <div class="form-group row">
-      <%= f.label :name, class: "col-lg-2 col-form-label" %>
-      <div class="col-lg-10">                  
-         <%= f.text_field :name, class: "form-control" %>
-         <small id="nameHelpBlock" class="form-text text-muted font-italic">
-           *Required
-         </small>
+   <div class="row">
+      <div class="col-md-9">
+         <div class="form-group row">
+            <%= f.label :name, class: "col-lg-2 col-form-label" %>
+            <div class="col-lg-10">                  
+               <%= f.text_field :name, class: "form-control" %>
+               <small id="nameHelpBlock" class="form-text text-muted font-italic">
+                 *Required
+               </small>
+            </div>
+         </div>
+         <div class="form-group row has-icon">
+            <%= f.label :dob, "Date of Birth", class: "col-lg-2 col-form-label" %>
+            <div class="col-lg-10">
+               <span class="fa fa-calendar form-control-icon"></span>                  
+               <%= f.text_field :dob, class: "form-control datetimepicker-input", data: {toggle: "datetimepicker", target: "#baby_dob"}, autocomplete: "off" %>
+               <small id="dobHelpBlock" class="form-text text-muted font-italic">
+                 *Required
+               </small>
+            </div>
+         </div>
+         <div class="form-group row">
+            <%= f.label :gender, class: "col-lg-2 col-form-label" %>
+            <div class="col-lg-10">
+               <%= f.select(:gender, options_for_select([["Male", "Male"],["Female", "Femal"], ["Other", "Other"]]), {prompt: "Select Gender"}, {class: "custom-select form-control"} ) %>                  
+               <small id="genderHelpBlock" class="form-text text-muted font-italic">
+                 *Optional
+               </small>
+            </div>
+         </div>
+         <div class="form-group row">
+            <%= f.label :weight, class: "col-lg-2 col-form-label" %>
+            <div class="col-lg-10">                  
+               <%= f.text_field :weight, placeholder: "Ex: 6.5",class: "form-control" %>
+               <small id="weightHelpBlock" class="form-text text-muted font-italic">
+                 *Optional
+               </small>
+            </div>
+         </div>
+         <div class="form-group row">
+            <%= f.label :height, "Height/\nLength", class: "col-lg-2 col-form-label" %>
+            <div class="col-lg-10">                  
+               <%= f.text_field :height, placeholder: "Ex: 19.5", class: "form-control" %>
+               <small id="heightHelpBlock" class="form-text text-muted font-italic">
+                 *Optional
+               </small>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-3">
+         <div class="form-group row">
+            <%= f.file_field :baby_thumb %>
+         </div>
       </div>
    </div>
-   <div class="form-group row has-icon">
-      <%= f.label :dob, "Date of Birth", class: "col-lg-2 col-form-label" %>
-      <div class="col-lg-10">
-         <span class="fa fa-calendar form-control-icon"></span>                  
-         <%= f.text_field :dob, class: "form-control datetimepicker-input", data: {toggle: "datetimepicker", target: "#baby_dob"}, autocomplete: "off" %>
-         <small id="dobHelpBlock" class="form-text text-muted font-italic">
-           *Required
-         </small>
+   <div class="row">
+      <div class="col-md-9">
+         <div>
+            <%= f.button baby_submit_button_text, id: "baby-submit", class: "btn btn-success float-right", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Creating Dashboard..."} %>
+         </div>
       </div>
-   </div>
-   <div class="form-group row">
-      <%= f.label :gender, class: "col-lg-2 col-form-label" %>
-      <div class="col-lg-10">
-         <%= f.select(:gender, options_for_select([["Male", "Male"],["Female", "Femal"], ["Other", "Other"]]), {prompt: "Select Gender"}, {class: "custom-select form-control"} ) %>                  
-         <small id="genderHelpBlock" class="form-text text-muted font-italic">
-           *Optional
-         </small>
-      </div>
-   </div>
-   <div class="form-group row">
-      <%= f.label :weight, class: "col-lg-2 col-form-label" %>
-      <div class="col-lg-10">                  
-         <%= f.text_field :weight, placeholder: "Ex: 6.5",class: "form-control" %>
-         <small id="weightHelpBlock" class="form-text text-muted font-italic">
-           *Optional
-         </small>
-      </div>
-   </div>
-   <div class="form-group row">
-      <%= f.label :height, "Height/Length", class: "col-lg-2 col-form-label" %>
-      <div class="col-lg-10">                  
-         <%= f.text_field :height, placeholder: "Ex: 19.5", class: "form-control" %>
-         <small id="heightHelpBlock" class="form-text text-muted font-italic">
-           *Optional
-         </small>
-      </div>
-   </div>
-   <div class="form-group">
-      <%= f.button baby_submit_button_text, id: "baby-submit", class: "btn btn-success float-right mt-lg-3", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Creating Dashboard..."} %>
    </div>
 <% end %>
 </div>
