@@ -24,3 +24,9 @@
   <%= fa_icon("bath") %>
   <span class="d-md-none d-lg-inline-block">Track Bath</span>
 <% end %>
+<div class="sidebar__action mt-5">
+<%= link_to baby_entry_path(@baby, @entry), data: {confirm: "Are you sure?\nThis can't be undone."}, method: :delete, class: "btn btn-danger" do %>
+  <%= fa_icon("trash-o") %>
+  <span class="d-md-none d-lg-inline-block">Delete Entry</span>
+<% end %>
+</div>

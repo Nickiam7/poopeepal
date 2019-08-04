@@ -58,7 +58,7 @@
                         <h2>Welcome to <%= @baby.name %>'s new dashboard!</h2>
                         <p class="lead">You haven't created any entries for <%= @baby.name %> yet.</p>
                         <%= form_for([@baby, @entry]) do |f| %>
-                          <%= f.button class: "btn btn-primary mx-auto mt-3 mb-5", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Adding Entry..."} do %>
+                          <%= f.button class: "btn btn-success mx-auto mt-3 mb-5", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Adding Entry..."} do %>
                             <%= fa_icon("plus") %> 
                             Start Tracking Now!
                           <% end %>
@@ -70,6 +70,9 @@
                <div class="col-md-4">
                   <div class="baby baby__sidebar">
                      <div class="sidebar__section sidebar__section--info">
+                        <div>
+                           <%= image_tag(@baby.baby_photo_thumb, class: "img-fluid img-thumbnail rounded mx-auto mb-3 d-block") %>
+                        </div>
                         <h2 class="h4"><%= @baby.name %></h2>
                         <dl class="row">
                            <dt class="col-sm-6 col-md-12 col-xl-5">DOB:</dt>

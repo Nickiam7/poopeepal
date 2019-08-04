@@ -5,6 +5,10 @@ CarrierWave.configure do |config|
       aws_secret_access_key:  Rails.application.credentials.aws_secret_access_key,
       region:                 Rails.application.credentials.aws_region_name
    }
-   config.fog_directory  = Rails.application.credentials.development[:aws_bucket]
+   if Rails.env.production?
+      config.fog_directory  = Rails.application.credentials.production[:aws_bucket]
+   else
+      config.fog_directory  = Rails.application.credentials.development[:aws_bucket]
+   end
    config.fog_public     = true
 end

@@ -1,10 +1,5 @@
 <main>
 <div class="container">
-   <div class="entry-actions text-right">                              
-      <%= link_to baby_entry_path(@baby, @entry), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-light mb-2" do %>
-         <%= fa_icon("trash", class: "text-danger") %> Delete Entry
-      <% end %>                                       
-   </div>
    <div class="card">      
       <div class="card-body box-shadow">
          <div class="row">
@@ -75,7 +70,7 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <% @feedings.order(created_at: :desc).each do |feeding| %>            
+                        <% @feedings.order(created_at: :desc).each do |feeding| %>
                            <tr>
                               <td><%= feeding.start_time.strftime(" %l:%M %p") %></td>
                               <td><%= feeding.end_time.strftime(" %l:%M %p") %></td>

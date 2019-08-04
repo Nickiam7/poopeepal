@@ -9,6 +9,10 @@ class Baby < ApplicationRecord
       ]
    end
 
+   def baby_photo_thumb
+      self.baby_thumb.present? ? self.baby_thumb.url : "/assets/baby-default.png"
+   end
+
    has_many :entries, dependent: :destroy
    has_many :feedings, through: :entries
 

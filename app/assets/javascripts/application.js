@@ -99,6 +99,26 @@ document.addEventListener("turbolinks:load", function() {
       }) 
    }
 
+   const readURL = (input) => {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#img-preview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#baby-thumb").change(function() {
+        $('#img-preview').removeClass('d-none');
+        $('#img-preview').addClass('img-thumbnail');
+
+        $('#img-preview--default').addClass('d-none');
+        $('#img-preview--default').removeClass('d-block');
+        readURL(this);
+    });
+
    (function($){
       $.fn.appendAround = function(){
          return this.each(function(){
