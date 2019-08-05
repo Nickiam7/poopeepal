@@ -62,8 +62,12 @@
       <div class="col-md-3">
          <div class="card">
              <div class="card-body">
-                 <h5 class="card-title">Baby Photo:</h5>
-                 <%= image_tag("baby-default.png", id: "img-preview--default", class: "img-fluid img-thumbnail rounded mx-auto mb-1 d-block") %>
+                 <h6 class="card-title">Photo</h6>
+                  <% if @baby.baby_thumb.present? %>
+                     <%= image_tag(@baby.baby_thumb.url, id: "img-preview", width: "100%", class: "img-fluid img-thumbnail rounded mx-auto mb-1 d-block") %>
+                  <% else %>
+                  <%= image_tag("baby-default.png", id: "img-preview--default", class: "img-fluid img-thumbnail rounded mx-auto mb-1 d-block") %>
+                 <% end %>
                  <%= image_tag("", id: "img-preview", width: "100%", class: "d-none") %>
              </div>
              <div class="">
