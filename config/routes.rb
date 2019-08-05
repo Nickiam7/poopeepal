@@ -6,6 +6,7 @@ Rails.application.routes.draw do
    
    get "/babies/start", to: "babies#start"
    resources :babies do 
+      member {get :full}
       resources :entries do
          resources :feedings, only: [:create, :edit, :update, :destroy]
          resources :diapers, only: [:create, :edit, :update, :destroy]

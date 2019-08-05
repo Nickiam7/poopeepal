@@ -12,7 +12,7 @@
     <span class="d-md-none d-lg-inline-block">Back</span>
   <% end %>
 </div>
-<% elsif current_page?(controller: "babies", action: "show") %>
+<% elsif current_page?(controller: "babies", action: "show") || current_page?(controller: "babies", action: "full")%>
 <div class="sidebar__action">
   <%= form_for([@baby, @entry]) do |f| %>
     <%= f.button class: "btn btn-success mx-auto my-3 d-block", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Adding Entry..."} do %>

@@ -9,7 +9,13 @@ class BabiesController < ApplicationController
    end
 
    def show      
-      @baby = Baby.friendly.find(params[:id])
+      @baby = Baby.friendly.find(params[:id])      
+      @entries_current_month = @baby.entries.includes(:feedings).order(created_at: :desc).where(created_at: Time.now.beginning_of_month..Time.now.end_of_month).all
+      @entry = Entry.new
+   end
+
+   def full
+      @baby = Baby.friendly.find(params[:id])      
       @entries = @baby.entries.includes(:feedings).order(created_at: :desc).group_by {|entry| entry.created_at.beginning_of_month}
       @entry = Entry.new
    end
