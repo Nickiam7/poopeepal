@@ -13,11 +13,18 @@
                               <div class="col-lg-6">
                                  <div class="card border">
                                     <%= link_to image_tag(baby.baby_photo_thumb, class: "card-img-top img-fluid", style: "max-height: 250px; object-fit: cover;"), baby_path(baby)  %>
-                                    <div class="card-body">
-                                       <p class="card-title"><strong><%= link_to baby.name, baby_path(baby) %></strong></p>
-                                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                       <%= link_to "Got to Dashboard", baby_path(baby), class: "card-link" %>
-                                       <%= link_to "Edit Dashboard", edit_baby_path(baby), class: "card-link" %>
+                                    <div class="card-body">                                                                                 
+                                       <p class="card-title mb-0"><strong><%= link_to baby.name, baby_path(baby) %></strong></p>
+                                       <p class="mb-0 small">DOB: <%= baby.dob.strftime("%b %e, %Y") %></p>                                          
+                                    </div>
+                                    <div class="card-body text-center">
+                                       <div class="btn-group border" role="group" aria-label="Basic example">
+                                       <%= link_to "View Dashboard", baby_path(baby), class: "btn btn-light btn-sm" %>
+                                       <%= link_to "Edit Dashboard", edit_baby_path(baby), class: "btn btn-light btn-sm border-left" %>
+                                       </div>
+                                       <%= link_to baby_path(baby), method: :delete, data: {confirm: "Are you sure? This can't be undone."}, class: "btn btn-sm btn-danger" do %>
+                                          <%= fa_icon("trash-o") %>
+                                       <% end %>
                                     </div>
                                  </div>
                               </div>

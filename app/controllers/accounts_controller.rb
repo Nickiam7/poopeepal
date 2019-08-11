@@ -4,6 +4,6 @@ class AccountsController < ApplicationController
 
    def dashboard
       @account = current_account
-      @babies = @account.babies
+      @babies = @account.babies      
    end
 end

@@ -33,11 +33,11 @@
                            <%= fa_icon("ellipsis-v") %><p class="sr-only">Edit or delete diaper</p>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right animation slideDownIn">
-                           <%= link_to "", class: "dropdown-item" do %>
+                           <%= link_to edit_baby_entry_diaper_path(@baby, @entry, diaper), class: "dropdown-item" do %>
                               <%= fa_icon("edit") %> Edit
                            <% end %>
                            <div class="dropdown-divider"></div>
-                           <%= link_to "", method: :delete, class: "dropdown-item" do %>
+                           <%= link_to baby_entry_diaper_path(@baby, @entry, diaper), method: :delete, data: {confirm: "Are you sure?"}, class: "dropdown-item" do %>
                               <%= fa_icon("trash", class: "text-danger") %> Delete
                            <% end %>                                       
                         </div>
@@ -59,7 +59,7 @@
       </table>
    <% else %>
    <div class="text-center p-3">
-         <h2>You haven't tracked any diapers yet.</h2>
+         <h2>You  haven't tracked any diapers yet.</h2>
          <%= link_to "#", data: {toggle: "modal", target: "#diaperModal"}, class: "btn btn-primary mt-3" do %>
            <%= fa_icon("plus") %>
            <span class="d-none d-lg-inline-block">Track Diaper</span>

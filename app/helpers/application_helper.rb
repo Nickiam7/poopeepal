@@ -41,4 +41,8 @@ module ApplicationHelper
       when "notice" then "alert alert-success"
       end
    end
+
+   def for_current_month
+      Time.now.beginning_of_month..Time.now.end_of_month
+   end
 end
