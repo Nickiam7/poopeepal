@@ -1,7 +1,7 @@
 module HeadingHelper
    def dashboard_heading
       if current_page?(root_path) || current_page?("/dashboard")
-         "Your Account Dashboard"
+         "Account Home"
       elsif current_page?(new_baby_path)    
          "Create Your Baby's New Dashboard"
       elsif current_page?(full_baby_path(@baby))
