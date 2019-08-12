@@ -1,6 +1,6 @@
 <div class="sleepings d-none">
    <h2 class="text-danger"><%= fa_icon("bed", class: "bed animation") %> Sleep</h2>
-   <% if @feedings.any? %>
+   <% if @sleeps.any? %>
       <table class="table table-striped--mod">
          <thead>
             <tr>
@@ -13,26 +13,26 @@
             </tr>
          </thead>
          <tbody>
-            <% @feedings.order(created_at: :desc).each do |feeding| %>            
+            <% @sleeps.order(created_at: :desc).each do |sleep| %>            
                <tr>
-                  <td><%= feeding.start_time.strftime(" %l:%M %p") %></td>
-                  <td><%= feeding.end_time.strftime(" %l:%M %p") %></td>
-                  <td><%= ((feeding.end_time - feeding.start_time) / 1.minute).round %> Minutes</td>
-                  <td><%= feeding.amount %> oz</td>
+                  <td><%= sleep.start_time %></td>
+                  <td><%= sleep.end_time %></td>
+                  <td> <%= (sleep.end_time.to_time.to_i - sleep.start_time.to_time.to_i) / 60  %> Minutes</td>
+                  <td><%= sleep.location %></td>
                   <td class="text-center">
-                     <button class="btn btn-sm btn-light <%= "text-success" if feeding.feeding_notes.present? %>" data-toggle="collapse" href="#collapseExample-<%= feeding.id %>" role="button" aria-expanded="false" aria-controls="collapseExample-<%= feeding.id %>">Notes <%= fa_icon(feeding.feeding_notes.present? ? "chevron-down" : "close", class: ("text-success" if feeding.feeding_notes.present?)) %></button>
+                     <button class="btn btn-sm btn-light <%= "text-success" if sleep.notes.present? %>" data-toggle="collapse" href="#collapseExample-<%= sleep.id %>" role="button" aria-expanded="false" aria-controls="collapseExample-<%= sleep.id %>">Notes <%= fa_icon(sleep.notes.present? ? "chevron-down" : "close", class: ("text-success" if sleep.notes.present?)) %></button>
                   </td>
                   <td class="text-center">
                      <div class="btn-group">
                         <button type="button" class="btn btn-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           <%= fa_icon("ellipsis-v") %><p class="sr-only">Edit or delete feeding</p>
+                           <%= fa_icon("ellipsis-v") %><p class="sr-only">Edit or delete sleep</p>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right animation slideDownIn">
-                           <%= link_to edit_baby_entry_feeding_path(@baby, @entry, feeding), class: "dropdown-item" do %>
+                           <%= link_to edit_baby_entry_sleep_path(@baby, @entry, sleep), class: "dropdown-item" do %>
                               <%= fa_icon("edit") %> Edit
                            <% end %>
                            <div class="dropdown-divider"></div>
-                           <%= link_to baby_entry_feeding_path(@baby, @entry, feeding), method: :delete, class: "dropdown-item" do %>
+                           <%= link_to baby_entry_sleep_path(@baby, @entry, sleep), method: :delete, class: "dropdown-item" do %>
                               <%= fa_icon("trash", class: "text-danger") %> Delete
                            <% end %>                                       
                         </div>
@@ -41,10 +41,10 @@
                </tr>
                <tr>
                   <td colspan="6" class="p-0 border-0">
-                     <div class="collapse" id="collapseExample-<%= feeding.id %>">
+                     <div class="collapse" id="collapseExample-<%= sleep.id %>">
                         <div class="card card-body border-top mb-0" style="background: #fdfdfd;">
                            <h3>Notes:</h3>
-                           <%= feeding.feeding_notes.present? ? feeding.feeding_notes : "No notes were recorded for this feeding." %>
+                           <%= sleep.notes.present? ? sleep.notes : "No notes were recorded for this sleep." %>
                         </div>
                      </div>
                   </td>
@@ -54,10 +54,10 @@
       </table>
       <% else %>
          <div class="text-center p-3">
-            <h2>You haven't tracked any feedings yet.</h2>
-            <%= link_to "#", data: {toggle: "modal", target: "#feedingModal"}, class: "btn btn-primary mt-3" do %>
+            <h2>You haven't tracked any sleep time yet.</h2>
+            <%= link_to "#", data: {toggle: "modal", target: "#sleepModal"}, class: "btn btn-primary mt-3" do %>
               <%= fa_icon("plus") %>
-              <span class="d-none d-lg-inline-block">Track Feeding</span>
+              <span class="d-none d-lg-inline-block">Track sleep</span>
             <% end %>
          </div>
       <% end %>

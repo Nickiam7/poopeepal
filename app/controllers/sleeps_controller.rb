@@ -1,11 +1,11 @@
-class SleepController < ApplicationController
+class SleepsController < ApplicationController
    before_action :authenticate_account!
    layout "authenticated", except: [:edit]
    
    def create
-      @baby = Baby.friendly.find(params[:bab_id])
+      @baby = Baby.friendly.find(params[:baby_id])
       @entry = Entry.find(params[:entry_id])
-      @sleep = Sleep.new(sleep_params)
+      @sleep = @entry.sleeps.new(sleep_params)
       if @sleep.save
          flash[:success] = "Sleep has been recorded"
       else
