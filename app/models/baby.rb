@@ -16,6 +16,7 @@ class Baby < ApplicationRecord
    has_many :entries, dependent: :destroy
    has_many :feedings, through: :entries
    has_many :diapers, through: :entries
+   has_many :sleeps, through: :entries
 
    belongs_to :account
    

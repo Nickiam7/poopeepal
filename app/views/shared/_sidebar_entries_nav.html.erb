@@ -16,7 +16,7 @@
   <%= image_tag("diaper.svg", width: 16, alt: "Diaper Icon") %>
   <span class="d-md-none d-lg-inline-block">Track Diaper</span>
 <% end %>
-<%= link_to root_path, class: "nav-link" do %>
+<%= link_to "", data: {toggle: "modal", target: "#sleepModal"}, class: "nav-link" do %>
   <%= fa_icon("bed") %>
   <span class="d-md-none d-lg-inline-block">Track Sleep</span>
 <% end %>

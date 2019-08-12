@@ -1,0 +1,54 @@
+<div class="modal fade" id="sleepModal" tabindex="-1" role="dialog" aria-labelledby="sleepModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sleepModalLabel">Track Sleep</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_for([@baby, @entry, @sleep]) do |f| %>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="d-flex justify-content-between">
+                <%= f.label :start_time %>
+                <%= f.label "Close", class: "start-done d-none" %>
+              </div>
+              <%= f.text_field :start_time, class: "form-control datetimepicker-input", data: {toggle: "datetimepicker", target: "#sleep_start_time"}, autocomplete: "off" %>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex justify-content-between">
+                <%= f.label :end_time %>
+                <%= f.label "Close", class: "end-done d-none" %>
+              </div>              
+              <%= f.text_field :end_time, class: "form-control datetimepicker-input", data: {toggle: "datetimepicker", target: "#sleep_end_time"}, autocomplete: "off" %>
+            </div>
+            <div class="col-md-12 mt-2">
+              <div class="d-flex justify-content-between">
+                <%= f.label :location %>              
+              </div> 
+              <%= f.text_field :location, class: "form-control"%>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mt-3">
+              <a data-toggle="collapse" href="#sleepNotes" role="button" aria-expanded="false" aria-controls="sleepNotes">
+                  <%= fa_icon("plus") %> Add Note
+              </a>
+              <div class="collapse" id="sleepNotes">            
+                <%= f.label :notes %>
+                <%= f.text_area :notes, rows: 8, class: "form-control" %>                
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-space-between">
+          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+          <%= f.button "Track Sleep", class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i> Tracking Sleep..."} %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

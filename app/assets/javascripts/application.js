@@ -20,6 +20,7 @@
 //= require js-offcanvas.pkgd
 //= require feeding.js
 //= require diapers.js
+//= require sleep.js
 //= require turbolinks
 //= require_tree .
 
@@ -55,10 +56,21 @@ document.addEventListener("turbolinks:load", function() {
       date: endTime
    });
 
+   let startTimeSleep = moment($('#sleep_start_time').val(), 'h:mm A').toDate();
+   let endTimeSleep = moment($('#sleep_end_time').val(), 'h:mm A').toDate();   
+   $('#sleep_start_time').datetimepicker({
+      format: 'LT',
+      date: startTimeSleep
+   });
+   $('#sleep_end_time').datetimepicker({
+      format: 'LT',
+      date: endTimeSleep
+   });
+
    let diaperTime = moment($('#diaper_time').val(), 'h:mm A').toDate();
    $('#diaper_time').datetimepicker({
       format: 'LT',
-      date: diaperTime
+      date: diaperTime,      
    });
 
    let babySubmit     = document.querySelector('#baby-submit')

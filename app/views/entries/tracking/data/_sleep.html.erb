@@ -1,0 +1,64 @@
+<div class="sleepings d-none">
+   <h2 class="text-danger"><%= fa_icon("bed", class: "bed animation") %> Sleep</h2>
+   <% if @feedings.any? %>
+      <table class="table table-striped--mod">
+         <thead>
+            <tr>
+               <th class="sticky-header feeding-col-width">Start Time</th>
+               <th class="sticky-header feeding-col-width">End Time</th>
+               <th class="sticky-header feeding-col-width">Duration</th>
+               <th class="sticky-header feeding-col-width">Location</th>
+               <th class="text-center sticky-header feeding-col-width">Notes</th>
+               <th class="text-center sticky-header feeding-col-width">Actions</th>
+            </tr>
+         </thead>
+         <tbody>
+            <% @feedings.order(created_at: :desc).each do |feeding| %>            
+               <tr>
+                  <td><%= feeding.start_time.strftime(" %l:%M %p") %></td>
+                  <td><%= feeding.end_time.strftime(" %l:%M %p") %></td>
+                  <td><%= ((feeding.end_time - feeding.start_time) / 1.minute).round %> Minutes</td>
+                  <td><%= feeding.amount %> oz</td>
+                  <td class="text-center">
+                     <button class="btn btn-sm btn-light <%= "text-success" if feeding.feeding_notes.present? %>" data-toggle="collapse" href="#collapseExample-<%= feeding.id %>" role="button" aria-expanded="false" aria-controls="collapseExample-<%= feeding.id %>">Notes <%= fa_icon(feeding.feeding_notes.present? ? "chevron-down" : "close", class: ("text-success" if feeding.feeding_notes.present?)) %></button>
+                  </td>
+                  <td class="text-center">
+                     <div class="btn-group">
+                        <button type="button" class="btn btn-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           <%= fa_icon("ellipsis-v") %><p class="sr-only">Edit or delete feeding</p>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right animation slideDownIn">
+                           <%= link_to edit_baby_entry_feeding_path(@baby, @entry, feeding), class: "dropdown-item" do %>
+                              <%= fa_icon("edit") %> Edit
+                           <% end %>
+                           <div class="dropdown-divider"></div>
+                           <%= link_to baby_entry_feeding_path(@baby, @entry, feeding), method: :delete, class: "dropdown-item" do %>
+                              <%= fa_icon("trash", class: "text-danger") %> Delete
+                           <% end %>                                       
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="6" class="p-0 border-0">
+                     <div class="collapse" id="collapseExample-<%= feeding.id %>">
+                        <div class="card card-body border-top mb-0" style="background: #fdfdfd;">
+                           <h3>Notes:</h3>
+                           <%= feeding.feeding_notes.present? ? feeding.feeding_notes : "No notes were recorded for this feeding." %>
+                        </div>
+                     </div>
+                  </td>
+               </tr>                           
+            <% end %>
+         </tbody>  
+      </table>
+      <% else %>
+         <div class="text-center p-3">
+            <h2>You haven't tracked any feedings yet.</h2>
+            <%= link_to "#", data: {toggle: "modal", target: "#feedingModal"}, class: "btn btn-primary mt-3" do %>
+              <%= fa_icon("plus") %>
+              <span class="d-none d-lg-inline-block">Track Feeding</span>
+            <% end %>
+         </div>
+      <% end %>
+</div>

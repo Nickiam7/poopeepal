@@ -25,7 +25,7 @@
                      </div>
                      <div class="tracking-overview__count tracking-changes">
                         <div class="tracking-changes__total">
-                           <h3><%= @diapers.count %></h3>
+                           <h3><%= @diapers.length %></h3>
                         </div>
                         <div class="tracking-changes__poo-pee">
                            <div class="pee">
@@ -57,31 +57,8 @@
             <div class="col">
                <%= render partial: "entries/tracking/data/feedings" %>
                <%= render partial: "entries/tracking/data/diapers" %>
-               
-               <div class="sleepings d-none">
-                  <h2 class="text-danger"><%= fa_icon("bed", class: "bed animation") %> Sleep</h2>
-                  <table class="table table-striped">
-                     <thead>
-                        <tr>
-                           <th>Start Time</th>
-                           <th>End Time</th>
-                           <th>Length</th>
-                           <th>Amount</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <% @feedings.order(created_at: :desc).each do |feeding| %>
-                           <tr>
-                              <td><%= feeding.start_time.strftime(" %l:%M %p") %></td>
-                              <td><%= feeding.end_time.strftime(" %l:%M %p") %></td>
-                              <td><%= ((feeding.end_time - feeding.start_time) / 1.minute).round %> Minutes</td>
-                              <td><%= feeding.amount %> oz</td>
-                           </tr>
-                        <% end %>
-                     </tbody>  
-                  </table>
-               </div>
-            </div>
+               <%= render partial: "entries/tracking/data/sleep" %>               
+            </div>               
          </div>
       </div>
    </div>
@@ -89,6 +66,7 @@
 </main>
 <%= render partial: "entries/tracking/forms/form_feeding" %>
 <%= render partial: "entries/tracking/forms/form_diaper" %>
+<%= render partial: "entries/tracking/forms/form_sleep" %>
 <script>
 $(document).on('turbolinks:load', function() {
    $('.feeding-details').on('click', function() {          

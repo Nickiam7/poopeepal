@@ -1,0 +1,12 @@
+.sleepings .sticky-header {
+   background: #f8f9fa;
+   top: 56px;
+   z-index: 1;
+   position: -webkit-sticky;
+   position: sticky;
+}
+
+.sleepings .dropdown-menu-right.show {
+   left: -132px !important;
+   top: 35px !important;  
+}

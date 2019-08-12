@@ -10,6 +10,8 @@ class EntriesController < ApplicationController
       @feedings = @entry.feedings.all
       @diaper = Diaper.new
       @diapers = @entry.diapers.all
+      @sleep = Sleep.new
+      @sleeps = @entry.sleeps.all
    end
 
    def create
