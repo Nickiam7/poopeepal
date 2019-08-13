@@ -17,7 +17,7 @@
                <tr>
                   <td><%= sleep.start_time %></td>
                   <td><%= sleep.end_time %></td>
-                  <td> <%= (sleep.end_time.to_time.to_i - sleep.start_time.to_time.to_i) / 60  %> Minutes</td>
+                  <td> <%= sleep_converter(sleep) %></td>
                   <td><%= sleep.location %></td>
                   <td class="text-center">
                      <button class="btn btn-sm btn-light <%= "text-success" if sleep.notes.present? %>" data-toggle="collapse" href="#collapseExample-<%= sleep.id %>" role="button" aria-expanded="false" aria-controls="collapseExample-<%= sleep.id %>">Notes <%= fa_icon(sleep.notes.present? ? "chevron-down" : "close", class: ("text-success" if sleep.notes.present?)) %></button>
