@@ -14,6 +14,18 @@ class SleepsController < ApplicationController
       redirect_to baby_entry_path(@baby, @entry)
    end 
 
+   def destroy
+      @baby = Baby.friendly.find(params[:baby_id])
+      @entry = Entry.find(params[:entry_id])
+      @sleep = Sleep.find(params[:id])
+      if @sleep.destroy
+         flash[:success] = "Sleep entry has been deleted."         
+      else
+         flash[:error] = "Something went wrong"
+      end
+      redirect_to baby_entry_path(@baby, @entry)
+   end
+
    private
 
    def sleep_params

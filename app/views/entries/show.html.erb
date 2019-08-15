@@ -47,7 +47,7 @@
                         <p class="tracking-overview__details sleep-details">View Details<%= fa_icon("chevron-down", class: "ml-1") %></p>
                      </div>
                      <div class="tracking-overview__count text-danger">
-                        <h3><%= @feedings.sum(:amount) %></h3><p>hrs</p>
+                        <h3><%= raw(@entry.total_sleep_time) %></h3>
                      </div>
                   </div>
                </div>
