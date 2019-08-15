@@ -12,7 +12,26 @@ class SleepsController < ApplicationController
          flash[:error] = "Something went wrong."
       end
       redirect_to baby_entry_path(@baby, @entry)
+   end
+
+   def edit
+      @baby = Baby.friendly.find(params[:baby_id])
+      @entry = Entry.find(params[:entry_id])
+      @sleep = Sleep.find(params[:id])
    end 
+
+   def update
+      @baby = Baby.friendly.find(params[:baby_id])
+      @entry = Entry.find(params[:entry_id])
+      @sleep = Sleep.find(params[:id])      
+      if @sleep.update(sleep_params)
+         flash[:success] = "sleep data has been updated."
+         redirect_to baby_entry_path(@baby, @entry)
+      else
+         flash[:error] = "Sorry, something went wrong."
+         render :edit
+      end
+   end
 
    def destroy
       @baby = Baby.friendly.find(params[:baby_id])
