@@ -38,12 +38,12 @@
                                           <%= image_tag("diaper--dark.svg", width: 18) %>
                                        </div>
                                        <div class="metric text-danger">
-                                          <h3 class="metric__data">10 hours</h3>
+                                          <h3 class="metric__data"><%= pluralize(entry.total_sleep_time_entry, "Hour") %></h3>
                                           <%= fa_icon("bed") %>
                                        </div>
                                        <div class="metric text-primary">
-                                          <h3 class="metric__data"><%= fa_icon("check") %></h3>
-                                          <%= fa_icon("bath") %>
+                                          <h3 class="metric__data"><%= fa_icon("check", style: "opacity: 0.3") %></h3>
+                                             <%= fa_icon("bath") %>
                                        </div>                                          
                                     </div>
                                  </div>                              
