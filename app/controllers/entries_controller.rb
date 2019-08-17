@@ -38,13 +38,15 @@ class EntriesController < ApplicationController
       end
    end
 
-   def toggle_bath
+   def track_bath
       @baby = Baby.friendly.find(params[:baby_id])
       @entry = Entry.find(params[:id])
       if @entry.no_bath?
          @entry.bath!
+         flash[:success] = "#{@baby.name}\'s bath has been recorded."
       elsif @entry.bath?
          @entry.no_bath!
+         flash[:success] = "#{@baby.name}\'s bath has been deleted."
       end
       redirect_to baby_entry_path(@baby, @entry)
    end
