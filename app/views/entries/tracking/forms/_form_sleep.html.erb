@@ -10,14 +10,24 @@
       <%= form_for([@baby, @entry, @sleep]) do |f| %>
         <div class="modal-body">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="d-flex justify-content-between">
                 <%= f.label :start_time %>
                 <%= f.label "Close", class: "start-done d-none" %>
               </div>
               <%= f.text_field :start_time, class: "form-control datetimepicker-input", data: {toggle: "datetimepicker", target: "#sleep_start_time"}, autocomplete: "off" %>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4 d-flex justify-content-center align-items-center">
+              <div class="form-group mb-0 mt-1">
+                <%= f.label "In Progress?" %>
+                <label class="switch switch-green">
+                  <%= f.check_box :in_progress, class: "switch-input"  %>
+                  <span class="switch-label" data-on="Yes" data-off="No"></span>
+                  <span class="switch-handle"></span>
+                </label>
+              </div>
+            </div>
+            <div class="col-md-4">
               <div class="d-flex justify-content-between">
                 <%= f.label :end_time %>
                 <%= f.label "Close", class: "end-done d-none" %>

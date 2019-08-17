@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_152548) do
+ActiveRecord::Schema.define(version: 2019_08_17_143847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_152548) do
     t.datetime "updated_at", null: false
     t.string "notes"
     t.bigint "entry_id"
+    t.boolean "in_progress", default: false
     t.index ["entry_id"], name: "index_sleeps_on_entry_id"
   end
 

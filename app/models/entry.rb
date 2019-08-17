@@ -23,7 +23,9 @@ class Entry < ApplicationRecord
    def total_sleep_time
       sleep_time = []
       self.sleeps.each do |sleep|
-         sleep_time << (sleep.end_time.to_time.to_i - sleep.start_time.to_time.to_i) / 60
+         if !sleep.in_progress
+            sleep_time << (sleep.end_time.to_time.to_i - sleep.start_time.to_time.to_i) / 60
+         end
       end
       hrs = sleep_time.inject(:+) / 60 if sleep_time.length >= 1
       mins = sleep_time.inject(:+) % 60 if sleep_time.length >= 1
@@ -33,7 +35,9 @@ class Entry < ApplicationRecord
    def total_sleep_time_entry
       sleep_time = []
       self.sleeps.each do |sleep|
-         sleep_time << (sleep.end_time.to_time.to_i - sleep.start_time.to_time.to_i) / 60
+         if !sleep.in_progress
+            sleep_time << (sleep.end_time.to_time.to_i - sleep.start_time.to_time.to_i) / 60
+         end
       end
       hrs = sleep_time.inject(:+) / 60 if sleep_time.length >= 1
    end

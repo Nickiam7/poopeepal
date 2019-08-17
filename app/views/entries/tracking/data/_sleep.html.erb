@@ -16,7 +16,7 @@
             <% @sleeps.order(created_at: :desc).each do |sleep| %>            
                <tr>
                   <td><%= sleep.start_time %></td>
-                  <td><%= sleep.end_time %></td>
+                  <td><%= sleep.end_time ? sleep.end_time : "In Progress" %></td>
                   <td> <%= sleep_converter(sleep) %></td>
                   <td><%= sleep.location %></td>
                   <td class="text-center">

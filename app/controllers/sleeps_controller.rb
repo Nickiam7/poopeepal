@@ -48,6 +48,6 @@ class SleepsController < ApplicationController
    private
 
    def sleep_params
-      params.require(:sleep).permit(:start_time, :end_time, :location, :notes)
+      params.require(:sleep).permit(:start_time, :end_time, :location, :notes, :in_progress)
    end
 end
