@@ -8,6 +8,7 @@ Rails.application.routes.draw do
    resources :babies do 
       member {get :full}
       resources :entries do
+         member {post :toggle_bath}
          resources :feedings, only: [:create, :edit, :update, :destroy]
          resources :diapers, only: [:create, :edit, :update, :destroy]
          resources :sleeps, only: [:create, :edit, :update, :destroy]

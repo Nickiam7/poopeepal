@@ -38,6 +38,17 @@ class EntriesController < ApplicationController
       end
    end
 
+   def toggle_bath
+      @baby = Baby.friendly.find(params[:baby_id])
+      @entry = Entry.find(params[:id])
+      if @entry.no_bath?
+         @entry.bath!
+      elsif @entry.bath?
+         @entry.no_bath!
+      end
+      redirect_to baby_entry_path(@baby, @entry)
+   end
+
    private
 
    def check_current_account_permissions

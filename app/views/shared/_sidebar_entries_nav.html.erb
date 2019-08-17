@@ -20,9 +20,18 @@
   <%= fa_icon("bed") %>
   <span class="d-md-none d-lg-inline-block">Track Sleep</span>
 <% end %>
-<%= link_to root_path, class: "nav-link" do %>
-  <%= fa_icon("bath") %>
-  <span class="d-md-none d-lg-inline-block">Track Bath</span>
+<%= link_to toggle_bath_baby_entry_path(@baby, @entry), method: :post, class: "nav-link d-flex justify-content-between" do %>
+  <div class="mr-1">
+    <%= fa_icon("bath") %>
+    <span class="d-md-none d-lg-inline-block">Track Bath</span>
+  </div>
+  <div class="badge badge-light d-flex justify-content-between align-items-center">
+    <% if @entry.no_bath? %>
+      <%= fa_icon("check", class: "text-muted fa-lg") %>
+    <% else %>  
+      <%= fa_icon("check", class: "text-primary fa-lg") %>
+    <% end %>
+  </div>
 <% end %>
 <div class="sidebar__action mt-5">
 <%= link_to baby_entry_path(@baby, @entry), data: {confirm: "Are you sure?\nThis can't be undone."}, method: :delete, class: "btn btn-danger" do %>

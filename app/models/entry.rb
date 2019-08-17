@@ -6,6 +6,8 @@ class Entry < ApplicationRecord
    belongs_to :account
    belongs_to :baby
 
+   enum bath: {no_bath: 0, bath: 1}
+
    def sum_feedings
       self.feedings.sum(&:amount)
    end
@@ -17,6 +19,7 @@ class Entry < ApplicationRecord
          "<h3>#{hrs}</h3><p>" + "Hour".pluralize(hrs) + "</p> <h3>#{mins}</h3><p>" + "minute".pluralize(mins) + "</p>"
       end
    end
+   
    def total_sleep_time
       sleep_time = []
       self.sleeps.each do |sleep|
