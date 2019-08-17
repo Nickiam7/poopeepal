@@ -20,16 +20,16 @@
   <%= fa_icon("bed") %>
   <span class="d-md-none d-lg-inline-block">Track Sleep</span>
 <% end %>
-<%= link_to toggle_bath_baby_entry_path(@baby, @entry), method: :post, class: "nav-link d-flex justify-content-between" do %>
+<%= link_to track_bath_baby_entry_path(@baby, @entry), method: :post, class: "nav-link d-flex justify-content-between" do %>
   <div class="mr-1">
     <%= fa_icon("bath") %>
     <span class="d-md-none d-lg-inline-block">Track Bath</span>
   </div>
-  <div class="badge badge-light d-flex justify-content-between align-items-center">
+  <div class="d-flex justify-content-between align-items-center">
     <% if @entry.no_bath? %>
-      <%= fa_icon("check", class: "text-muted fa-lg") %>
+      <%= fa_icon("check-circle", class: "text-primary fa-lg", style: "opacity: 0.3;") %>
     <% else %>  
-      <%= fa_icon("check", class: "text-primary fa-lg") %>
+      <%= fa_icon("check-circle", class: "text-primary fa-lg") %>
     <% end %>
   </div>
 <% end %>

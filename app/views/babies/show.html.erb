@@ -42,8 +42,14 @@
                                           <%= fa_icon("bed") %>
                                        </div>
                                        <div class="metric text-primary">
-                                          <h3 class="metric__data"><%= fa_icon("check", style: "opacity: 0.3") %></h3>
-                                             <%= fa_icon("bath") %>
+                                          <h3 class="metric__data">
+                                             <% if entry.no_bath? %>
+                                               <%= fa_icon("check-circle", class: "text-primary fa-lg", style: "opacity: 0.3;") %>
+                                             <% else %>  
+                                               <%= fa_icon("check-circle", class: "text-primary fa-lg") %>
+                                             <% end %>
+                                          </h3>
+                                          <%= fa_icon("bath") %>
                                        </div>                                          
                                     </div>
                                  </div>                              
@@ -102,7 +108,7 @@
 
                            <dd class="col-sm-6 col-md-12 col-xl-7">
                               <% if @baby.weight.present? %>
-                                 <%= baby_weight %>                                                                  
+                                 <%= baby_weight %> 
                               <% else %>
                                  <%= link_to edit_baby_path(@baby), class: "small" do %>
                                     <%= fa_icon("plus") %>  Add Weight
