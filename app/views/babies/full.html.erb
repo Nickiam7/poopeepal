@@ -31,20 +31,26 @@
                                        <div class="d-flex justify-content-between">
                                           <div class="metric text-success">
                                              <h3 class="metric__data">
-                                                <%= entry.sum_feedings%> oz
+                                                <%= entry.sum_feedings %> oz
                                              </h3>
                                              <%= fa_icon("cutlery") %> 
                                           </div>
                                           <div class="metric">
-                                             <h3 class="metric__data"><%= entry.diapers_count %> Changes</h3>
+                                             <h3 class="metric__data"><%= pluralize(entry.diapers_count, "Change") %></h3>
                                              <%= image_tag("diaper--dark.svg", width: 18) %>
                                           </div>
                                           <div class="metric text-danger">
-                                             <h3 class="metric__data">10 hours</h3>
+                                             <h3 class="metric__data"><%= pluralize(entry.total_sleep_time_entry, "Hour") %></h3>
                                              <%= fa_icon("bed") %>
                                           </div>
                                           <div class="metric text-primary">
-                                             <h3 class="metric__data"><%= fa_icon("check") %></h3>
+                                             <h3 class="metric__data">
+                                                <% if entry.no_bath? %>
+                                                  <%= fa_icon("check-circle", class: "text-primary fa-lg", style: "opacity: 0.1;") %>
+                                                <% else %>  
+                                                  <%= fa_icon("check-circle", class: "text-primary fa-lg") %>
+                                                <% end %>
+                                             </h3>
                                              <%= fa_icon("bath") %>
                                           </div>                                          
                                        </div>
