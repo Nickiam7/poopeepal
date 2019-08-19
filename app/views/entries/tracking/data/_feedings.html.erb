@@ -16,8 +16,8 @@
          <% @feedings.order(created_at: :desc).each do |feeding| %>            
             <tr>
                <td><%= feeding.start_time.strftime(" %l:%M %p") %></td>
-               <td><%= feeding.end_time.strftime(" %l:%M %p") %></td>
-               <td><%= ((feeding.end_time - feeding.start_time) / 1.minute).round %> Minutes</td>
+               <td><%= feeding.end_time ? feeding.end_time.strftime(" %l:%M %p") : "--" %></td>
+               <td><%= feeding.end_time ? ((feeding.end_time - feeding.start_time) / 1.minute).round.to_s + " Minutes" : "--"%></td>
                <td><%= feeding.amount %> oz</td>
                <td class="text-center">
                   <button class="btn btn-sm btn-light <%= "text-success" if feeding.feeding_notes.present? %>" data-toggle="collapse" href="#collapseExample-<%= feeding.id %>" role="button" aria-expanded="false" aria-controls="collapseExample-<%= feeding.id %>">Notes <%= fa_icon(feeding.feeding_notes.present? ? "chevron-down" : "close", class: ("text-success" if feeding.feeding_notes.present?)) %></button>
