@@ -41,4 +41,8 @@ class Entry < ApplicationRecord
       end
       hrs = sleep_time.inject(:+) / 60 if sleep_time.length >= 1
    end
+
+   def sleep_in_progress?
+      self.sleeps.any?{ |sleep| sleep.in_progress? }
+   end
 end

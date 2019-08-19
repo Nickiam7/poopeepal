@@ -49,6 +49,11 @@
                      <div class="tracking-overview__count text-danger">
                         <h3><%= raw(@entry.total_sleep_time) %></h3>
                      </div>
+                     <% if @entry.sleep_in_progress? %>
+                        <div class="tracking-overview__footer bg-danger">
+                           <%= fa_icon("exclamation-circle") %> <strong>Shhh.</strong> <%= @baby.name %> is sleeping.
+                        </div>
+                     <% end %>
                   </div>
                </div>
             </div>
