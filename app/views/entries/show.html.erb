@@ -2,6 +2,13 @@
 <div class="container">
    <div class="card">      
       <div class="card-body box-shadow">
+         <div class="d-flex mb-3 border-bottom" style="justify-content: space-between;">
+            <h1 class="h3"><%= @baby.name %>: <%= @baby.dob.strftime('%b %d, %Y') %> 
+            </h1>
+            <%= link_to baby_entry_path(@baby, @entry), data: {confirm: "Are you sure you want to delete this entry?\n\nThis can't be undone."}, method: :delete, class: "btn btn-danger mb-2" do %>
+              <%= fa_icon("trash-o") %>
+            <% end %>
+         </div>
          <div class="row">
             <div class="col-md-4">
                <div class="tracking">
