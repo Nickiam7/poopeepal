@@ -84,7 +84,7 @@
                   <div class="baby baby__sidebar">
                      <div class="sidebar__section sidebar__section--info">
                         <div>
-                           <%= image_tag(@baby.baby_photo_thumb, class: "img-fluid img-thumbnail rounded mx-auto mb-3 d-block") %>
+                           <%= image_tag(@baby.baby_photo_thumb, class: "img-fluid img-thumbnail rounded mx-auto mb-3 d-block") if @baby.baby_thumb.url.present? %>
                         </div>
                         <h2 class="h4"><%= @baby.name %></h2>
                         <dl class="row">

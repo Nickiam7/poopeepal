@@ -13,7 +13,7 @@
                               <% @babies.each do |baby| %>
                                  <div class="col-lg-6">
                                     <div class="card border">
-                                       <%= link_to image_tag(baby.baby_photo_thumb, class: "card-img-top img-fluid", style: "max-height: 250px; object-fit: cover;"), baby_path(baby)  %>
+                                       <%= link_to image_tag(baby.baby_photo_thumb, class: "card-img-top img-fluid", style: "max-height: 250px; object-fit: cover;"), baby_path(baby) if baby.baby_thumb.url.present? %>
                                        <div class="card-body">                                                                                 
                                           <p class="card-title mb-0"><strong><%= link_to baby.name, baby_path(baby) %></strong></p>
                                           <p class="mb-0 small">DOB: <%= baby.dob.strftime("%b %e, %Y") %></p>                                          
