@@ -16,7 +16,7 @@ class Entry < ApplicationRecord
       if mins == 0
          "<h3>#{hrs}</h3><p>hrs</p>"
       else
-         "<h3>#{hrs}</h3><p>" + "Hour".pluralize(hrs) + "</p> <h3>#{mins}</h3><p>" + "minute".pluralize(mins) + "</p>"
+         "<h3>#{hrs ? hrs : 0}</h3><p>" + " Hour".pluralize(hrs) + "</p> <h3>#{mins ? mins : 0}</h3><p>" + " Minute".pluralize(mins) + "</p>"
       end
    end
    
