@@ -21,7 +21,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave', '~> 0.11.2'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'fog-aws', '~> 3.5', '>= 3.5.2'
-gem 'devise', '~> 4.5'
+gem 'devise', '~> 4.7'
 gem 'bootstrap', '~> 4.1.3'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
