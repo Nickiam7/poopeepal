@@ -18,7 +18,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'carrierwave', '~> 0.11.2'
+gem 'carrierwave', '~> 1.3.2'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'fog-aws', '~> 3.5', '>= 3.5.2'
 gem 'devise', '~> 4.5'
